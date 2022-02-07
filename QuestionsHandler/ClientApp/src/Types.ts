@@ -12,3 +12,5 @@
 
     [key :string] :number | string | string[][]
 }
+
+export type None = {}

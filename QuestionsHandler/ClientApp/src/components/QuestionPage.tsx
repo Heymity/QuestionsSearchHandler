@@ -1,7 +1,5 @@
 ﻿import React, { Component } from 'react';
-
-interface IProps {
-}
+import { None } from "../Types";
 
 interface IState {
     questions: [],
@@ -10,10 +8,10 @@ interface IState {
     sortingDirection: number
 }
 
-export class QuestionDisplay extends Component<IProps, IState> {
+export class QuestionDisplay extends Component<None, IState> {
     static displayName = QuestionDisplay.name;
 
-    constructor(props :IProps) {
+    constructor(props :None) {
         super(props);
         this.state = { questions: [], loading: true, sortedField: "year", sortingDirection: 1 };
     }
