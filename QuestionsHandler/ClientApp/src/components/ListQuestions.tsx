@@ -14,6 +14,8 @@ interface IState {
   
   renderingQuestion :boolean
   selectedQuestionIndex :number
+  
+  expandedQuestion :number
 }
 
 export class ListQuestions extends Component<IProps, IState> {
@@ -21,7 +23,15 @@ export class ListQuestions extends Component<IProps, IState> {
 
   constructor(props :IProps) {
     super(props);
-    this.state = { questions: [], loading: true, sortedField: "year", sortingDirection: -1, renderingQuestion: false, selectedQuestionIndex: 0 };
+    this.state = { 
+      questions: [], 
+      loading: true, 
+      sortedField: "year",
+      sortingDirection: -1, 
+      renderingQuestion: false, 
+      selectedQuestionIndex: 0, 
+      expandedQuestion: -1
+    };
   }
 
   componentDidMount() {
@@ -58,6 +68,7 @@ export class ListQuestions extends Component<IProps, IState> {
               <th>Question ID</th>
               <th onClick={() => requestSort('rating')}>Rating {getSortingSymbol('rating')}</th>
               <th onClick={() => requestSort('source')}>Source {getSortingSymbol('source')}</th>
+              <th onClick={() => requestSort('topics')}>Topics {getSortingSymbol('topics')}</th>
               <th onClick={() => requestSort('year')}>Year {getSortingSymbol('year')}</th>
             </tr>
             </thead>
@@ -67,6 +78,7 @@ export class ListQuestions extends Component<IProps, IState> {
                   <td>{question.questionId}</td>
                   <td>{question.rating}</td>
                   <td>{question.source}</td>
+                  <td>{question.topics[0].join(' → ')}</td>
                   <td>{question.year}</td>
                 </tr>
             )}
@@ -77,7 +89,7 @@ export class ListQuestions extends Component<IProps, IState> {
     
     const renderQuestion = (qIndex :number) => {
       if (qIndex < 0 || qIndex >= this.state.questions.length) return
-      this.setState({ renderingQuestion: true, selectedQuestionIndex: qIndex })
+      this.setState({ renderingQuestion: true, selectedQuestionIndex: qIndex, expandedQuestion: qIndex })
     }
     
     const goOneQuestionBack = () => {
