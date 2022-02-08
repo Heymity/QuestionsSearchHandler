@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
-import { Question } from "../Types";
-import { QuestionDisplay } from "./QuestionRendering";
+import React, {Component} from 'react';
+import {Question} from "../Types";
+import {QuestionDisplay} from "./QuestionRendering";
 
 interface IProps {
 }
 
 interface IState {
   questions :Question[],
-  loading :boolean,
+  questionsCount :number
+  loading :boolean
+
+  questionsPerPage :number
+  page :number
   
   sortedField :string
   sortingDirection :number
   
   renderingQuestion :boolean
   selectedQuestionIndex :number
+  selectedQuestion? :Question
   
   expandedQuestion :number
 }
@@ -24,12 +29,19 @@ export class ListQuestions extends Component<IProps, IState> {
   constructor(props :IProps) {
     super(props);
     this.state = { 
-      questions: [], 
+      questions: [],
+      questionsCount: 0,
       loading: true, 
+      
+      questionsPerPage: 50,
+      page: 1,
+      
       sortedField: "year",
       sortingDirection: -1, 
+      
       renderingQuestion: false, 
-      selectedQuestionIndex: 0, 
+      selectedQuestionIndex: 0,
+      
       expandedQuestion: -1
     };
   }
@@ -87,30 +99,42 @@ export class ListQuestions extends Component<IProps, IState> {
       );
     }
     
-    const renderQuestion = (qIndex :number) => {
+    const renderQuestion = async (qIndex :number) => {
       if (qIndex < 0 || qIndex >= this.state.questions.length) return
-      this.setState({ renderingQuestion: true, selectedQuestionIndex: qIndex, expandedQuestion: qIndex })
-    }
-    
-    const goOneQuestionBack = () => {
-      if (this.state.selectedQuestionIndex > 0)
-        this.setState({ selectedQuestionIndex: this.state.selectedQuestionIndex - 1 })
+      let question = await getQuestionOfId(this.state.questions[qIndex].questionId)
+      this.setState({ renderingQuestion: true, selectedQuestionIndex: qIndex, expandedQuestion: qIndex, selectedQuestion: question })
     }
 
-    const goOneQuestionForwards = () => {
-      if (this.state.selectedQuestionIndex < this.state.questions.length - 1)
-        this.setState({ selectedQuestionIndex: this.state.selectedQuestionIndex + 1 })
+    const getQuestionOfId = async (id :number) :Promise<Question> => {
+      let response = await fetch(`api/Questions/${id}`)
+      return await response.json()
+    }
+    
+    const goOneQuestionBack = async () => {
+      if (this.state.selectedQuestionIndex <= 0) return
+
+      let qIndex = this.state.selectedQuestionIndex - 1
+      let question = await getQuestionOfId(this.state.questions[qIndex].questionId)
+      this.setState({ selectedQuestionIndex: qIndex, selectedQuestion: question })
+    }
+
+    const goOneQuestionForwards = async () => {
+      if (this.state.selectedQuestionIndex >= this.state.questions.length - 1) return
+
+      let qIndex = this.state.selectedQuestionIndex + 1
+      let question = await getQuestionOfId(this.state.questions[qIndex].questionId)
+      this.setState({ selectedQuestionIndex: qIndex, selectedQuestion: question })
     }
     
     if (!this.state.renderingQuestion ) {
       let contents = this.state.loading
           ? <p><em>Loading...</em></p>
           : <QuestionsTable/>
-
+      
       return (
           <div>
-            <h1 id="tableLabel">Questions List</h1>
-            <p>A list of all the questions ({this.state.questions.length})</p>
+            <h1 id="tableLabel">Questions List {this.state.page}</h1>
+            <p>A list of all the questions ({this.state.questionsCount})</p>
             {contents}
           </div>
       );
@@ -124,15 +148,24 @@ export class ListQuestions extends Component<IProps, IState> {
               <input type="text" className="question-nav-input" value={this.state.selectedQuestionIndex} onChange={(event) => renderQuestion(+event.target.value)}/>
               <button className="btn btn-warning" onClick={goOneQuestionForwards}>Próxima questão →</button>
             </div>
-            <QuestionDisplay question={this.state.questions[this.state.selectedQuestionIndex]}/>
+            <QuestionDisplay question={this.state.selectedQuestion as Question}/>
           </div>
       )
     }
   }
 
   async populateQuestionsData() {
-    const response = await fetch('api/Questions');
-    const data = await response.json();
-    this.setState({ questions: data, loading: false });
+    const qCountResponse = await fetch('api/Questions/count');
+    const qCountData = await qCountResponse.json();
+    this.setState({ questionsCount: qCountData, loading: false });
+    
+    await this.refreshQuestions();
+  }
+  
+  async refreshQuestions() {
+    this.setState({ loading: true })
+    const questionsResponse = await fetch(`api/Questions/0/${this.state.questionsCount}`);
+    const questionsData = await questionsResponse.json();
+    this.setState({ questions: questionsData, loading: false });
   }
 }

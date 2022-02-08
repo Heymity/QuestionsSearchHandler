@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Text.Json;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
@@ -8,12 +9,15 @@ public static class DatabaseSeeder
 {
     private const string QuestionsRootFolderPath = @"D:/Coding/SuperProfRE/QuestionsDB";
     
-    public static void LoadAllQuestionsToDB()
+    public static void LoadAllQuestionsToDBAndPrecomputeTopics()
     {
         var questionsToAdd = new List<Question>();
 
         var client = new MongoClient("mongodb://localhost:27017/local");
         var collection = client.GetDatabase("local").GetCollection<Question>("questions");
+        
+        // ReSharper disable once StringLiteralTypo
+        var rootTopic = new QuestionTopic(QuestionTopic.RootQuestionsTopic);
         
         foreach (var topicDirName in Directory.GetDirectories(QuestionsRootFolderPath))
         {
@@ -27,10 +31,26 @@ public static class DatabaseSeeder
                 }
                 else
                     Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) already added");
+                
+                // ReSharper disable once StringLiteralTypo
+                var qTopic = QuestionTopic.FromStringMatrix(q.Topics);
+                rootTopic.MergeTopic(qTopic);
             }
         }
 
-        collection.InsertMany(questionsToAdd);
+        if (questionsToAdd.Count > 0)
+            collection.InsertMany(questionsToAdd);
+
+        WriteTopicsToFile(rootTopic);
+    }
+
+    private static async void WriteTopicsToFile(QuestionTopic topic)
+    {
+        await using var createStream = File.Create(QuestionTopic.TopicsFileName);
+        
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        await JsonSerializer.SerializeAsync(createStream, topic, options);
+        await createStream.DisposeAsync();
     }
 
     private static Question LoadQuestionFromFolder(string folder)

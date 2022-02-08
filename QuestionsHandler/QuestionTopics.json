@@ -1,0 +1,769 @@
+{
+  "TopicName": "Ensino M\u00E9dio",
+  "subTopics": [
+    {
+      "TopicName": "Biologia",
+      "subTopics": [
+        {
+          "TopicName": "Evolu\u00E7\u00E3o Biol\u00F3gica",
+          "subTopics": [
+            {
+              "TopicName": "Evid\u00EAncias da Evolu\u00E7\u00E3o Biol\u00F3gica",
+              "subTopics": [
+                {
+                  "TopicName": "Adapta\u00E7\u00F5es ao Meio Ambiente",
+                  "subTopics": [
+                    {
+                      "TopicName": "Adapta\u00E7\u00F5es ao Meio Ambiente",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Reino Animal / Protoctistas",
+          "subTopics": [
+            {
+              "TopicName": "Cordados",
+              "subTopics": [
+                {
+                  "TopicName": "Peixes",
+                  "subTopics": [
+                    {
+                      "TopicName": "Peixes",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        }
+      ],
+      "isLast": false
+    },
+    {
+      "TopicName": "Biologia",
+      "subTopics": [
+        {
+          "TopicName": "Evolu\u00E7\u00E3o Biol\u00F3gica",
+          "subTopics": [
+            {
+              "TopicName": "Evid\u00EAncias da Evolu\u00E7\u00E3o Biol\u00F3gica",
+              "subTopics": [
+                {
+                  "TopicName": "Anatomia Comparada",
+                  "subTopics": [
+                    {
+                      "TopicName": "Anatomia Comparada",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        }
+      ],
+      "isLast": false
+    },
+    {
+      "TopicName": "Biologia",
+      "subTopics": [
+        {
+          "TopicName": "Evolu\u00E7\u00E3o Biol\u00F3gica",
+          "subTopics": [
+            {
+              "TopicName": "Teorias",
+              "subTopics": [
+                {
+                  "TopicName": "Darwinismo",
+                  "subTopics": [
+                    {
+                      "TopicName": "Darwinismo",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        }
+      ],
+      "isLast": false
+    },
+    {
+      "TopicName": "F\u00EDsica",
+      "subTopics": [
+        {
+          "TopicName": "Eletricidade",
+          "subTopics": [
+            {
+              "TopicName": "Eletrodin\u00E2mica",
+              "subTopics": [
+                {
+                  "TopicName": "Tens\u00E3o e Corrente",
+                  "subTopics": [
+                    {
+                      "TopicName": "Tens\u00E3o e Corrente",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Circuitos",
+                  "subTopics": [
+                    {
+                      "TopicName": "Circuitos",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Segunda Lei de Ohm",
+                  "subTopics": [
+                    {
+                      "TopicName": "Segunda Lei de Ohm",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Pot\u00EAncia",
+                  "subTopics": [
+                    {
+                      "TopicName": "Pot\u00EAncia",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Primeira Lei de Ohm",
+                  "subTopics": [
+                    {
+                      "TopicName": "Primeira Lei de Ohm",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Geradores",
+                  "subTopics": [
+                    {
+                      "TopicName": "Geradores",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Associa\u00E7\u00E3o de Resistores",
+                  "subTopics": [
+                    {
+                      "TopicName": "Associa\u00E7\u00E3o de Resistores",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Trabalho e Energia",
+                  "subTopics": [
+                    {
+                      "TopicName": "Trabalho e Energia",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Instrumentos",
+                  "subTopics": [
+                    {
+                      "TopicName": "Instrumentos",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Kirchoff",
+                  "subTopics": [
+                    {
+                      "TopicName": "Kirchoff",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Eletrost\u00E1tica",
+              "subTopics": [
+                {
+                  "TopicName": "Campo El\u00E9trico Uniforme",
+                  "subTopics": [
+                    {
+                      "TopicName": "Campo El\u00E9trico Uniforme",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Campo El\u00E9trico",
+                  "subTopics": [
+                    {
+                      "TopicName": "Campo El\u00E9trico",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Capacitores",
+                  "subTopics": [
+                    {
+                      "TopicName": "Capacitores",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Eletriza\u00E7\u00E3o",
+                  "subTopics": [
+                    {
+                      "TopicName": "Eletriza\u00E7\u00E3o",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Potencial El\u00E9trico",
+                  "subTopics": [
+                    {
+                      "TopicName": "Potencial El\u00E9trico",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Coulomb",
+                  "subTopics": [
+                    {
+                      "TopicName": "Coulomb",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Trabalho da For\u00E7a El\u00E9trica",
+                  "subTopics": [
+                    {
+                      "TopicName": "Trabalho da For\u00E7a El\u00E9trica",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "\u00D3ptica",
+          "subTopics": [
+            {
+              "TopicName": "Fundamentos",
+              "subTopics": [
+                {
+                  "TopicName": "Fundamentos",
+                  "subTopics": [],
+                  "isLast": true
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Espelhos Planos",
+              "subTopics": [
+                {
+                  "TopicName": "Constru\u00E7\u00F5es",
+                  "subTopics": [
+                    {
+                      "TopicName": "Constru\u00E7\u00F5es",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Mec\u00E2nica",
+          "subTopics": [
+            {
+              "TopicName": "Din\u00E2mica",
+              "subTopics": [
+                {
+                  "TopicName": "Lei da In\u00E9rcia",
+                  "subTopics": [
+                    {
+                      "TopicName": "Lei da In\u00E9rcia",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "For\u00E7a El\u00E1stica",
+                  "subTopics": [
+                    {
+                      "TopicName": "For\u00E7a El\u00E1stica",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Din\u00E2mica do Movimento Circular",
+                  "subTopics": [
+                    {
+                      "TopicName": "Din\u00E2mica do Movimento Circular",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Fundamentos",
+                  "subTopics": [
+                    {
+                      "TopicName": "Fundamentos",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Trabalho e Energia",
+              "subTopics": [
+                {
+                  "TopicName": "Sistemas Conservativos",
+                  "subTopics": [
+                    {
+                      "TopicName": "Sistemas Conservativos",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Energia",
+                  "subTopics": [
+                    {
+                      "TopicName": "Energia",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Pot\u00EAncia",
+                  "subTopics": [
+                    {
+                      "TopicName": "Pot\u00EAncia",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Movimento Harm\u00F4nico Simples",
+              "subTopics": [
+                {
+                  "TopicName": "Din\u00E2mica",
+                  "subTopics": [
+                    {
+                      "TopicName": "Din\u00E2mica",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Cinem\u00E1tica",
+              "subTopics": [
+                {
+                  "TopicName": "Lan\u00E7amento Obl\u00EDquo",
+                  "subTopics": [
+                    {
+                      "TopicName": "Lan\u00E7amento Obl\u00EDquo",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Queda Livre e Lan\u00E7amento Vertical",
+                  "subTopics": [
+                    {
+                      "TopicName": "Queda Livre e Lan\u00E7amento Vertical",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Movimento Uniforme",
+                  "subTopics": [
+                    {
+                      "TopicName": "Movimento Uniforme",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Movimento Circular Uniforme",
+                  "subTopics": [
+                    {
+                      "TopicName": "Movimento Circular Uniforme",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Hidrost\u00E1tica",
+              "subTopics": [
+                {
+                  "TopicName": "Press\u00E3o",
+                  "subTopics": [
+                    {
+                      "TopicName": "Press\u00E3o",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Stevin",
+                  "subTopics": [
+                    {
+                      "TopicName": "Stevin",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Est\u00E1tica",
+              "subTopics": [
+                {
+                  "TopicName": "Corpo Extenso",
+                  "subTopics": [
+                    {
+                      "TopicName": "Corpo Extenso",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Termologia",
+          "subTopics": [
+            {
+              "TopicName": "Calorimetria",
+              "subTopics": [
+                {
+                  "TopicName": "Calor Sens\u00EDvel",
+                  "subTopics": [
+                    {
+                      "TopicName": "Calor Sens\u00EDvel",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Mudan\u00E7as de Estado",
+                  "subTopics": [
+                    {
+                      "TopicName": "Mudan\u00E7as de Estado",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Calor Latente",
+                  "subTopics": [
+                    {
+                      "TopicName": "Calor Latente",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Magnetismo",
+          "subTopics": [
+            {
+              "TopicName": "Fontes de Campo Magn\u00E9tico",
+              "subTopics": [
+                {
+                  "TopicName": "Solen\u00F3ides",
+                  "subTopics": [
+                    {
+                      "TopicName": "Solen\u00F3ides",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Espiras",
+                  "subTopics": [
+                    {
+                      "TopicName": "Espiras",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Fio Retil\u00EDneo",
+                  "subTopics": [
+                    {
+                      "TopicName": "Fio Retil\u00EDneo",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "For\u00E7a Magn\u00E9tica",
+              "subTopics": [
+                {
+                  "TopicName": "Sobre Condutor",
+                  "subTopics": [
+                    {
+                      "TopicName": "Sobre Condutor",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                },
+                {
+                  "TopicName": "Sobre Part\u00EDcula",
+                  "subTopics": [
+                    {
+                      "TopicName": "Sobre Part\u00EDcula",
+                      "subTopics": [],
+                      "isLast": true
+                    }
+                  ],
+                  "isLast": false
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Movimento de Carga em Campo Magn\u00E9tico",
+              "subTopics": [
+                {
+                  "TopicName": "Movimento de Carga em Campo Magn\u00E9tico",
+                  "subTopics": [],
+                  "isLast": true
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "For\u00E7a Eletromotriz Induzida",
+              "subTopics": [
+                {
+                  "TopicName": "For\u00E7a Eletromotriz Induzida",
+                  "subTopics": [],
+                  "isLast": true
+                }
+              ],
+              "isLast": false
+            },
+            {
+              "TopicName": "Indu\u00E7\u00E3o Eletromagn\u00E9tica",
+              "subTopics": [
+                {
+                  "TopicName": "Indu\u00E7\u00E3o Eletromagn\u00E9tica",
+                  "subTopics": [],
+                  "isLast": true
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "An\u00E1lise Dimensional / Sistemas de Unidades",
+          "subTopics": [
+            {
+              "TopicName": "An\u00E1lise Dimensional / Sistemas de Unidades",
+              "subTopics": [],
+              "isLast": true
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Tem\u00E1tica",
+          "subTopics": [
+            {
+              "TopicName": "Tem\u00E1tica",
+              "subTopics": [],
+              "isLast": true
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Moderna",
+          "subTopics": [
+            {
+              "TopicName": "Efeito Fotoel\u00E9trico",
+              "subTopics": [
+                {
+                  "TopicName": "Efeito Fotoel\u00E9trico",
+                  "subTopics": [],
+                  "isLast": true
+                }
+              ],
+              "isLast": false
+            }
+          ],
+          "isLast": false
+        },
+        {
+          "TopicName": "Gr\u00E1ficos - Leitura e Interpreta\u00E7\u00E3o",
+          "subTopics": [
+            {
+              "TopicName": "Gr\u00E1ficos - Leitura e Interpreta\u00E7\u00E3o",
+              "subTopics": [],
+              "isLast": true
+            }
+          ],
+          "isLast": false
+        }
+      ],
+      "isLast": false
+    }
+  ],
+  "isLast": false
+}
