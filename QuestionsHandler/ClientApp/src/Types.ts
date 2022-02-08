@@ -7,8 +7,8 @@
     mainTopic :string,
     topics :string[][],
     rating :number,
-    questionPath :string,
-    answerPath :string
+    questionData :string,
+    answerData :string
 
     [key :string] :number | string | string[][]
 }

@@ -4,9 +4,9 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
+import { QuestionDisplay } from "./components/QuestionRendering";
 
 import './custom.css'
-import {QuestionDisplay} from "./components/QuestionPage";
 
 export default class App extends Component {
   static displayName = App.name;

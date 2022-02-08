@@ -33,9 +33,9 @@ public class Question
     [BsonElement("Rating")]
     public byte Rating { get; set; }
     
-    [BsonElement("QuestionPath")]
-    public string QuestionPath { get; set; }
+    [BsonElement("QuestionData")]
+    public string QuestionData { get; set; }
     
-    [BsonElement("AnswerPath")]
-    public string AnswerPath { get; set; }
+    [BsonElement("AnswerData")]
+    public string AnswerData { get; set; }
 }

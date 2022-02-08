@@ -1,5 +1,7 @@
 #undef SEEDING
 
+using MongoDB.Driver;
+
 #if SEEDING
 
 using QuestionsHandler;
@@ -11,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddSingleton<IMongoClient, MongoClient>(s =>
+{
+    var uri = s.GetRequiredService<IConfiguration>()["MongoUri"];
+    return new MongoClient(uri);
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

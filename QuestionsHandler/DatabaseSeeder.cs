@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Localization;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace QuestionsHandler;
+
 
 public static class DatabaseSeeder
 {
@@ -26,8 +26,8 @@ public static class DatabaseSeeder
                     questionsToAdd.Add(q);
                     Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) loaded and added to list");
                 }
-                
-                Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) already added");
+                else
+                    Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) already added");
             }
         }
 
