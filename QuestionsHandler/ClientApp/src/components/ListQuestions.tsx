@@ -16,8 +16,8 @@ interface IState {
   selectedQuestionIndex :number
 }
 
-export class FetchData extends Component<IProps, IState> {
-  static displayName = FetchData.name;
+export class ListQuestions extends Component<IProps, IState> {
+  static displayName = ListQuestions.name;
 
   constructor(props :IProps) {
     super(props);
@@ -56,17 +56,15 @@ export class FetchData extends Component<IProps, IState> {
             <thead>
             <tr>
               <th>Question ID</th>
-              <th>Question ID</th>
-              <th><button type="button" onClick={() => requestSort('rating')} className="transparentButton">Rating {getSortingSymbol('rating')} </button></th>
-              <th><button type="button" onClick={() => requestSort('source')} className="transparentButton">Source {getSortingSymbol('source')}</button></th>
-              <th><button type="button" onClick={() => requestSort('year')} className="transparentButton">Year {getSortingSymbol('year')}</button></th>
+              <th onClick={() => requestSort('rating')}>Rating {getSortingSymbol('rating')}</th>
+              <th onClick={() => requestSort('source')}>Source {getSortingSymbol('source')}</th>
+              <th onClick={() => requestSort('year')}>Year {getSortingSymbol('year')}</th>
             </tr>
             </thead>
             <tbody>
             {sortedQuestions.map((question, index) =>
                 <tr key={question.questionId} onClick={() => renderQuestion(index)} className="questions-row">
                   <td>{question.questionId}</td>
-                  <td>{index}</td>
                   <td>{question.rating}</td>
                   <td>{question.source}</td>
                   <td>{question.year}</td>
@@ -109,9 +107,11 @@ export class FetchData extends Component<IProps, IState> {
       return (
           <div>
             <button className="btn btn-outline-info" onClick={() => this.setState({ renderingQuestion: false })}>← Go back to list</button>
-            <button className="btn btn-warning" onClick={goOneQuestionBack}>← Questão anterior</button>
-            <input type="text" value={this.state.selectedQuestionIndex} onChange={(event) => renderQuestion(+event.target.value)}/>
-            <button className="btn btn-warning" onClick={goOneQuestionForwards}>Próxima questão →</button>
+            <div className="btn-group question-page-nav">
+              <button className="btn btn-warning" onClick={goOneQuestionBack}>← Questão anterior</button>
+              <input type="text" className="question-nav-input" value={this.state.selectedQuestionIndex} onChange={(event) => renderQuestion(+event.target.value)}/>
+              <button className="btn btn-warning" onClick={goOneQuestionForwards}>Próxima questão →</button>
+            </div>
             <QuestionDisplay question={this.state.questions[this.state.selectedQuestionIndex]}/>
           </div>
       )

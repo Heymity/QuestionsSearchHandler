@@ -4,7 +4,6 @@ using MongoDB.Driver;
 
 namespace QuestionsHandler;
 
-
 public static class DatabaseSeeder
 {
     private const string QuestionsRootFolderPath = @"D:/Coding/SuperProfRE/QuestionsDB";
