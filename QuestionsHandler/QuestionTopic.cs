@@ -1,4 +1,7 @@
-﻿namespace QuestionsHandler;
+﻿using System.Text;
+using UnidecodeSharpFork;
+
+namespace QuestionsHandler;
 
 public class QuestionTopic
 {
@@ -18,9 +21,11 @@ public class QuestionTopic
 
     public bool MergeTopic(QuestionTopic topic)
     {
+        //Console.WriteLine(topic.TopicName.Unidecode());
+        //the match is not with the child to child, but rather parent with child (EM->Fis) - (Fis->...)
         foreach (var questionSubTopic in subTopics)
         {
-            foreach (var mergeTopicSubTopic in topic.subTopics.Where(mergeTopicSubTopic => questionSubTopic.TopicName == mergeTopicSubTopic.TopicName))
+            foreach (var mergeTopicSubTopic in topic.subTopics.Where(mergeTopicSubTopic => AreOfSameTopic(questionSubTopic, mergeTopicSubTopic)))
             {
                 if (questionSubTopic.isLast && mergeTopicSubTopic.isLast) return true;
 
@@ -28,34 +33,36 @@ public class QuestionTopic
             }
         }
         
-        if (TopicName == topic.TopicName)
+        if (AreOfSameTopic(this, topic))
             subTopics.AddRange(topic.subTopics);
         else
             subTopics.Add(topic);
         return true;
 
+        bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a') == b.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a');
     }
 
-    public static QuestionTopic FromStringMatrix(string[][] topics)
+    public static List<QuestionTopic> TopicsListFromStringMatrix(string[][] topics)
     {
-        var rootTopic = new QuestionTopic(RootQuestionsTopic);
-        foreach (var topicArray in topics)
-        {
-            rootTopic.subTopics.Add(FromStringArray(topicArray));
-        }
+        var topicsList = topics.Select(FromStringArray).ToList();
 
-        return rootTopic;
+        return topicsList;
     }
     
     public static QuestionTopic FromStringArray(string[] topics)
     {
-        var rootTopic = new QuestionTopic(topics[0]);
-        
-        if (topics.Length > 1)
-            rootTopic.subTopics.Add(FromStringArray(topics[1..]));
-        else
-            rootTopic.subTopics.Add(new QuestionTopic(topics[0]));
-        
+        var rootTopic = new QuestionTopic(RootQuestionsTopic);
+
+        var lastTopic = rootTopic;
+        foreach (var topic in topics)
+        {
+            var qTopic = new QuestionTopic(topic);
+            lastTopic.subTopics.Add(qTopic);
+
+            lastTopic = qTopic;
+        }
+
+        //Console.WriteLine("Root Topic from array: " + rootTopic.subTopics.Aggregate(rootTopic.TopicName, (f, s) => f + "->" + s.TopicName) + " | Array: " + topics.Aggregate((f, s) => f + "|" + s));
         return rootTopic;
     }
 }

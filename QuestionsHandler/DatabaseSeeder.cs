@@ -19,6 +19,7 @@ public static class DatabaseSeeder
         // ReSharper disable once StringLiteralTypo
         var rootTopic = new QuestionTopic(QuestionTopic.RootQuestionsTopic);
         
+        //var breakFlag = 0;
         foreach (var topicDirName in Directory.GetDirectories(QuestionsRootFolderPath))
         {
             foreach (var questionIdDirName in Directory.GetDirectories(topicDirName))
@@ -33,9 +34,14 @@ public static class DatabaseSeeder
                     Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) already added");
                 
                 // ReSharper disable once StringLiteralTypo
-                var qTopic = QuestionTopic.FromStringMatrix(q.Topics);
-                rootTopic.MergeTopic(qTopic);
+                var qTopics = QuestionTopic.TopicsListFromStringMatrix(q.Topics);
+                qTopics.ForEach(t => rootTopic.MergeTopic(t));
+
+                //breakFlag++;
+                //if(breakFlag>= 10) break;
             }
+
+            //break;
         }
 
         if (questionsToAdd.Count > 0)
