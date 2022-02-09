@@ -12,22 +12,95 @@ interface IState {
 
 interface TopicDisplayProps{
     questionTopic :QuestionTopic
+    nestedIndex? :number
+    startOpen? :boolean
+    parentQuestionTopic? :Topic
 }
 
-const Topic = (props :TopicDisplayProps) => {
-    return (
-        <div>
-            <h6>{props.questionTopic.topicName}</h6>
-            {/*!props.questionTopic.IsLast && props.questionTopic.SubTopics.map(p => <Topic questionTopic={p}/>)*/}
-        </div>
-    )
+interface TopicState {
+    collapsed :boolean
+    refresh :boolean
+}
+
+export class Topic extends Component<TopicDisplayProps, TopicState> {
+    constructor(props :TopicDisplayProps) {
+        super(props);
+        props.questionTopic.isSelected = props.questionTopic.isSelected ?? false;
+        this.state = { collapsed: !props.startOpen ?? true, refresh: true }
+        this.toggleCollapse = this.toggleCollapse.bind(this)
+        this.areAllSubTopicsSelectedRecursively = this.areAllSubTopicsSelectedRecursively.bind(this)
+        this.refresh = this.refresh.bind(this)
+    }
+    
+    toggleCollapse() {
+        this.setState({ collapsed: !this.state.collapsed })
+    }
+    
+    refresh(){
+        this.setState({ refresh: !this.state.refresh })
+    }
+    
+    toggleSelectTopic(value :boolean) {
+        this.setState({ refresh: value })
+        this.toggleSelectionRecursively(this.props.questionTopic, value)
+        this.refreshTreeRecursively(this)
+    }
+    
+    toggleSelectionRecursively(topic :QuestionTopic, value :boolean) {
+        topic.subTopics.forEach(t => this.toggleSelectionRecursively(t, value))
+        
+        topic.isSelected = value;
+    }
+    
+    areAllSubTopicsSelectedRecursively(topic :QuestionTopic) :boolean {
+        if (topic.subTopics.length > 0) {
+            let subSelected = topic.subTopics.map(t => this.areAllSubTopicsSelectedRecursively(t))
+            if (subSelected.includes(false)) return false
+        }
+        
+        return topic.isSelected
+    }
+    
+    refreshTreeRecursively(topic :Topic) {
+        topic.refresh()
+        
+        let parentTopic = topic.props.parentQuestionTopic;
+        
+        if (parentTopic != null) this.refreshTreeRecursively(parentTopic)
+    }
+    
+    render() {
+        let nestedIndex = this.props.nestedIndex ?? 0;
+
+        let dashes = '\u00A0'.repeat(6 * nestedIndex) + "∟";
+
+        if (this.props.questionTopic.topicName === "Biologia") console.log(this.areAllSubTopicsSelectedRecursively(this.props.questionTopic))
+        return (
+            <div>
+                <div className="questionTopic">
+                    {dashes}
+                    <div className="questionTopicExpandDiv">
+                        {!this.props.questionTopic.isLast &&
+                            <button className="questionTopicExpandBtn" onClick={this.toggleCollapse}>{this.state.collapsed ? "►" : "▼"}</button>
+                        }
+                    </div>
+                    <input type="checkbox" className={(this.areAllSubTopicsSelectedRecursively(this.props.questionTopic) ? "" : "greyCheckBox ") + "form-check-input me-1"} checked={this.props.questionTopic.isSelected} onChange={event => this.toggleSelectTopic(event.target.checked)}/>
+                    <h6>&nbsp;{this.props.questionTopic.topicName}</h6>
+                </div>
+                {
+                    !this.props.questionTopic.isLast && !this.state.collapsed && 
+                    this.props.questionTopic.subTopics.map(t => <Topic questionTopic={t} nestedIndex={nestedIndex + 1} parentQuestionTopic={this}/>)
+                }
+            </div>
+        )
+    }
 }
 
 
 export class QuestionFilteringPage extends Component<IProps, IState> {
     constructor(props :IProps) {
         super(props);
-        this.state = { questionTopic: { topicName: "Hello", isLast: true, subTopics: [] }, loading: true }
+        this.state = { questionTopic: { topicName: "Hello", isLast: true, subTopics: [], isSelected: false }, loading: true }
     }
     
     componentDidMount() {
@@ -44,7 +117,7 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : <Topic questionTopic={this.state.questionTopic}/>
+            : <Topic questionTopic={this.state.questionTopic} startOpen={true}/>
         
         return (
             <div>

@@ -17,6 +17,7 @@ export type QuestionTopic = {
     topicName :string,
     subTopics :QuestionTopic[]
     isLast :boolean
+    isSelected :boolean
 }
 
 export type None = {}

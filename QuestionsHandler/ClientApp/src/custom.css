@@ -46,3 +46,40 @@ code {
   border-style: solid;
   background-color: #f5dfb3;
 }
+
+.questionTopic {
+  flex-direction: row;
+  display: flex;
+
+  padding: 1px 0 0 5px;
+  
+  border-width: 0 0 1px 0;
+  border-radius: 2px;
+  border-color: #c0c0c0;
+  border-style: solid;
+  
+  align-content: center;
+}
+
+.questionTopicExpandBtn {
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 3px;
+  border-color: #1b6ec2;
+  border-radius: 4px;
+  background-color: #1b6ec2;
+  color: #eaeaea;
+  font-size: 13px;
+  text-align: center;
+  text-anchor: middle;
+}
+
+.questionTopicExpandDiv {
+  width: 26px;
+}
+
+.greyCheckBox:checked {
+  background-color: #626262 !important;
+  border-color: #626262 !important;
+}
