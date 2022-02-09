@@ -1,4 +1,4 @@
-#define SEEDING
+#undef SEEDING
 
 using MongoDB.Driver;
 

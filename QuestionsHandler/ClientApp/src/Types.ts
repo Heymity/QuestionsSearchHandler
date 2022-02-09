@@ -13,4 +13,10 @@
     [key :string] :number | string | string[][]
 }
 
+export type QuestionTopic = {
+    topicName :string,
+    subTopics :QuestionTopic[]
+    isLast :boolean
+}
+
 export type None = {}

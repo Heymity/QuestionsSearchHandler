@@ -10,33 +10,33 @@ public class QuestionTopic
     public const string TopicsFileName = "QuestionTopics.json";
     
     public string TopicName { get; init; }
-    public List<QuestionTopic> subTopics { get; set; }
-    public bool isLast => !subTopics.Any();
+    public List<QuestionTopic> SubTopics { get; set; }
+    public bool IsLast => !SubTopics.Any();
 
     public QuestionTopic(string topicName)
     {
         TopicName = topicName;
-        subTopics = new List<QuestionTopic>();
+        SubTopics = new List<QuestionTopic>();
     }
 
     public bool MergeTopic(QuestionTopic topic)
     {
         //Console.WriteLine(topic.TopicName.Unidecode());
         //the match is not with the child to child, but rather parent with child (EM->Fis) - (Fis->...)
-        foreach (var questionSubTopic in subTopics)
+        foreach (var questionSubTopic in SubTopics)
         {
-            foreach (var mergeTopicSubTopic in topic.subTopics.Where(mergeTopicSubTopic => AreOfSameTopic(questionSubTopic, mergeTopicSubTopic)))
+            foreach (var mergeTopicSubTopic in topic.SubTopics.Where(mergeTopicSubTopic => AreOfSameTopic(questionSubTopic, mergeTopicSubTopic)))
             {
-                if (questionSubTopic.isLast && mergeTopicSubTopic.isLast) return true;
+                if (questionSubTopic.IsLast && mergeTopicSubTopic.IsLast) return true;
 
                 return questionSubTopic.MergeTopic(mergeTopicSubTopic);
             }
         }
         
         if (AreOfSameTopic(this, topic))
-            subTopics.AddRange(topic.subTopics);
+            SubTopics.AddRange(topic.SubTopics);
         else
-            subTopics.Add(topic);
+            SubTopics.Add(topic);
         return true;
 
         bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a') == b.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a');
@@ -57,7 +57,7 @@ public class QuestionTopic
         foreach (var topic in topics)
         {
             var qTopic = new QuestionTopic(topic);
-            lastTopic.subTopics.Add(qTopic);
+            lastTopic.SubTopics.Add(qTopic);
 
             lastTopic = qTopic;
         }
