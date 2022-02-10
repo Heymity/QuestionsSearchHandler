@@ -1,14 +1,10 @@
-﻿using System.Text;
-using UnidecodeSharpFork;
-
-namespace QuestionsHandler;
+﻿namespace QuestionsHandler;
 
 public class QuestionTopic
 {
     // ReSharper disable once StringLiteralTypo
     public const string RootQuestionsTopic = "Ensino Médio";
-    //TODO for the next seeding, change the file extension to .precomp.json
-    public const string TopicsFileName = "QuestionTopics.json";
+    public const string TopicsFileName = "QuestionTopics.precomp.json";
     
     public string TopicName { get; init; }
     public List<QuestionTopic> SubTopics { get; set; }
@@ -40,7 +36,16 @@ public class QuestionTopic
             SubTopics.Add(topic);
         return true;
 
-        bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a') == b.TopicName.Unidecode().Replace('ç', 'c').Replace('ã', 'a');
+        //TODO: Pretty sure there is no need for the .Unicode here, the bug was elsewhere
+        bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName == b.TopicName;
+    }
+
+    public void SortTopicsRecursively()
+    {
+        if (IsLast) return;
+        
+        SubTopics = SubTopics.OrderBy(t => t.TopicName).ToList();
+        SubTopics.ForEach(t => t.SortTopicsRecursively());
     }
 
     public static List<QuestionTopic> TopicsListFromStringMatrix(string[][] topics)

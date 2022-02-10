@@ -61,18 +61,18 @@
       "TopicName": "F\u00EDsica",
       "SubTopics": [
         {
+          "TopicName": "An\u00E1lise Dimensional / Sistemas de Unidades",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Eletricidade",
           "SubTopics": [
             {
               "TopicName": "Eletrodin\u00E2mica",
               "SubTopics": [
                 {
-                  "TopicName": "Tens\u00E3o e Corrente",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Geradores",
+                  "TopicName": "Associa\u00E7\u00E3o de Resistores",
                   "SubTopics": [],
                   "IsLast": true
                 },
@@ -82,22 +82,7 @@
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Segunda Lei de Ohm",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Pot\u00EAncia",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Associa\u00E7\u00E3o de Resistores",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Primeira Lei de Ohm",
+                  "TopicName": "Geradores",
                   "SubTopics": [],
                   "IsLast": true
                 },
@@ -107,17 +92,37 @@
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Trabalho e Energia",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
                   "TopicName": "Kirchoff",
                   "SubTopics": [],
                   "IsLast": true
                 },
                 {
+                  "TopicName": "Pot\u00EAncia",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Primeira Lei de Ohm",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
                   "TopicName": "Receptores",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Segunda Lei de Ohm",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Tens\u00E3o e Corrente",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Trabalho e Energia",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -128,17 +133,12 @@
               "TopicName": "Eletrost\u00E1tica",
               "SubTopics": [
                 {
-                  "TopicName": "Campo El\u00E9trico Uniforme",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
                   "TopicName": "Campo El\u00E9trico",
                   "SubTopics": [],
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Potencial El\u00E9trico",
+                  "TopicName": "Campo El\u00E9trico Uniforme",
                   "SubTopics": [],
                   "IsLast": true
                 },
@@ -148,12 +148,7 @@
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Trabalho da For\u00E7a El\u00E9trica",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Eletriza\u00E7\u00E3o",
+                  "TopicName": "Condutor Eletrizado",
                   "SubTopics": [],
                   "IsLast": true
                 },
@@ -163,7 +158,17 @@
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Condutor Eletrizado",
+                  "TopicName": "Eletriza\u00E7\u00E3o",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Potencial El\u00E9trico",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Trabalho da For\u00E7a El\u00E9trica",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -174,16 +179,21 @@
           "IsLast": false
         },
         {
+          "TopicName": "Gr\u00E1ficos - Leitura e Interpreta\u00E7\u00E3o",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Magnetismo",
           "SubTopics": [
             {
-              "TopicName": "Im\u00E3s",
-              "SubTopics": [],
-              "IsLast": true
-            },
-            {
               "TopicName": "Fontes de Campo Magn\u00E9tico",
               "SubTopics": [
+                {
+                  "TopicName": "Espiras",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
                 {
                   "TopicName": "Fio Retil\u00EDneo",
                   "SubTopics": [],
@@ -193,14 +203,14 @@
                   "TopicName": "Solen\u00F3ides",
                   "SubTopics": [],
                   "IsLast": true
-                },
-                {
-                  "TopicName": "Espiras",
-                  "SubTopics": [],
-                  "IsLast": true
                 }
               ],
               "IsLast": false
+            },
+            {
+              "TopicName": "For\u00E7a Eletromotriz Induzida",
+              "SubTopics": [],
+              "IsLast": true
             },
             {
               "TopicName": "For\u00E7a Magn\u00E9tica",
@@ -219,6 +229,11 @@
               "IsLast": false
             },
             {
+              "TopicName": "Im\u00E3s",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
               "TopicName": "Indu\u00E7\u00E3o Eletromagn\u00E9tica",
               "SubTopics": [],
               "IsLast": true
@@ -227,28 +242,48 @@
               "TopicName": "Movimento de Carga em Campo Magn\u00E9tico",
               "SubTopics": [],
               "IsLast": true
-            },
-            {
-              "TopicName": "For\u00E7a Eletromotriz Induzida",
-              "SubTopics": [],
-              "IsLast": true
             }
           ],
           "IsLast": false
         },
         {
-          "TopicName": "\u00D3ptica",
+          "TopicName": "Mec\u00E2nica",
           "SubTopics": [
             {
-              "TopicName": "Fundamentos",
-              "SubTopics": [],
-              "IsLast": true
-            },
-            {
-              "TopicName": "Lentes",
+              "TopicName": "Cinem\u00E1tica",
               "SubTopics": [
                 {
-                  "TopicName": "Gauss",
+                  "TopicName": "Gr\u00E1ficos",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Lan\u00E7amento Obl\u00EDquo",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Movimento Circular Uniforme",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Movimento Uniforme",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Movimento Uniformemente Variado",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Queda Livre e Lan\u00E7amento Vertical",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Vetorial / Componente da Acelera\u00E7\u00E3o",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -256,15 +291,140 @@
               "IsLast": false
             },
             {
-              "TopicName": "Instrumentos \u00D3pticos",
-              "SubTopics": [],
-              "IsLast": true
-            },
-            {
-              "TopicName": "Espelhos Planos",
+              "TopicName": "Din\u00E2mica",
               "SubTopics": [
                 {
-                  "TopicName": "Constru\u00E7\u00F5es",
+                  "TopicName": "A\u00E7\u00E3o e Rea\u00E7\u00E3o",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Atrito",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Din\u00E2mica do Movimento Circular",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "For\u00E7a El\u00E1stica",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Fundamentos",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Lei da In\u00E9rcia",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Princ\u00EDpio Fundamental",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Est\u00E1tica",
+              "SubTopics": [
+                {
+                  "TopicName": "Corpo Extenso",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Ponto Material",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Hidrodin\u00E2mica",
+              "SubTopics": [
+                {
+                  "TopicName": "Vaz\u00E3o",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Hidrost\u00E1tica",
+              "SubTopics": [
+                {
+                  "TopicName": "Arquimedes",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Densidade",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Press\u00E3o",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Stevin",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Movimento Harm\u00F4nico Simples",
+              "SubTopics": [
+                {
+                  "TopicName": "Din\u00E2mica",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Energia",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Osciladores",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Trabalho e Energia",
+              "SubTopics": [
+                {
+                  "TopicName": "Energia",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Pot\u00EAncia",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Sistemas Conservativos",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
+                  "TopicName": "Teorema da Energia Cin\u00E9tica",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -291,28 +451,29 @@
           "IsLast": false
         },
         {
-          "TopicName": "Mec\u00E2nica",
+          "TopicName": "Ondulat\u00F3ria",
           "SubTopics": [
             {
-              "TopicName": "Trabalho e Energia",
+              "TopicName": "Fundamentos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Interfer\u00EAncia",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "\u00D3ptica",
+          "SubTopics": [
+            {
+              "TopicName": "Espelhos Planos",
               "SubTopics": [
                 {
-                  "TopicName": "Teorema da Energia Cin\u00E9tica",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Sistemas Conservativos",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Energia",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Pot\u00EAncia",
+                  "TopicName": "Constru\u00E7\u00F5es",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -320,155 +481,20 @@
               "IsLast": false
             },
             {
-              "TopicName": "Din\u00E2mica",
-              "SubTopics": [
-                {
-                  "TopicName": "Lei da In\u00E9rcia",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Princ\u00EDpio Fundamental",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Fundamentos",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "A\u00E7\u00E3o e Rea\u00E7\u00E3o",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Din\u00E2mica do Movimento Circular",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "For\u00E7a El\u00E1stica",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Atrito",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
+              "TopicName": "Fundamentos",
+              "SubTopics": [],
+              "IsLast": true
             },
             {
-              "TopicName": "Cinem\u00E1tica",
-              "SubTopics": [
-                {
-                  "TopicName": "Vetorial / Componente da Acelera\u00E7\u00E3o",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Lan\u00E7amento Obl\u00EDquo",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Movimento Uniformemente Variado",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Movimento Uniforme",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Gr\u00E1ficos",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Queda Livre e Lan\u00E7amento Vertical",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Movimento Circular Uniforme",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
+              "TopicName": "Instrumentos \u00D3pticos",
+              "SubTopics": [],
+              "IsLast": true
             },
             {
-              "TopicName": "Movimento Harm\u00F4nico Simples",
+              "TopicName": "Lentes",
               "SubTopics": [
                 {
-                  "TopicName": "Osciladores",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Din\u00E2mica",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Energia",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
-            },
-            {
-              "TopicName": "Hidrost\u00E1tica",
-              "SubTopics": [
-                {
-                  "TopicName": "Press\u00E3o",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Densidade",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Stevin",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Arquimedes",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
-            },
-            {
-              "TopicName": "Hidrodin\u00E2mica",
-              "SubTopics": [
-                {
-                  "TopicName": "Vaz\u00E3o",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
-            },
-            {
-              "TopicName": "Est\u00E1tica",
-              "SubTopics": [
-                {
-                  "TopicName": "Ponto Material",
-                  "SubTopics": [],
-                  "IsLast": true
-                },
-                {
-                  "TopicName": "Corpo Extenso",
+                  "TopicName": "Gauss",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -479,11 +505,21 @@
           "IsLast": false
         },
         {
+          "TopicName": "Tem\u00E1tica",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Termologia",
           "SubTopics": [
             {
               "TopicName": "Calorimetria",
               "SubTopics": [
+                {
+                  "TopicName": "Calor Latente",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
                 {
                   "TopicName": "Calor Sens\u00EDvel",
                   "SubTopics": [],
@@ -495,12 +531,18 @@
                   "IsLast": true
                 },
                 {
-                  "TopicName": "Calor Latente",
+                  "TopicName": "Transmiss\u00E3o de Calor",
                   "SubTopics": [],
                   "IsLast": true
-                },
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Dilata\u00E7\u00E3o",
+              "SubTopics": [
                 {
-                  "TopicName": "Transmiss\u00E3o de Calor",
+                  "TopicName": "Linear",
                   "SubTopics": [],
                   "IsLast": true
                 }
@@ -527,76 +569,6 @@
                 }
               ],
               "IsLast": false
-            },
-            {
-              "TopicName": "Dilata\u00E7\u00E3o",
-              "SubTopics": [
-                {
-                  "TopicName": "Linear",
-                  "SubTopics": [],
-                  "IsLast": true
-                }
-              ],
-              "IsLast": false
-            }
-          ],
-          "IsLast": false
-        },
-        {
-          "TopicName": "Ondulat\u00F3ria",
-          "SubTopics": [
-            {
-              "TopicName": "Fundamentos",
-              "SubTopics": [],
-              "IsLast": true
-            },
-            {
-              "TopicName": "Interfer\u00EAncia",
-              "SubTopics": [],
-              "IsLast": true
-            }
-          ],
-          "IsLast": false
-        },
-        {
-          "TopicName": "An\u00E1lise Dimensional / Sistemas de Unidades",
-          "SubTopics": [],
-          "IsLast": true
-        },
-        {
-          "TopicName": "Tem\u00E1tica",
-          "SubTopics": [],
-          "IsLast": true
-        },
-        {
-          "TopicName": "Gr\u00E1ficos - Leitura e Interpreta\u00E7\u00E3o",
-          "SubTopics": [],
-          "IsLast": true
-        }
-      ],
-      "IsLast": false
-    },
-    {
-      "TopicName": "Qu\u00EDmica",
-      "SubTopics": [
-        {
-          "TopicName": "Geral",
-          "SubTopics": [
-            {
-              "TopicName": "\u00D3xido-redu\u00E7\u00E3o",
-              "SubTopics": [],
-              "IsLast": true
-            }
-          ],
-          "IsLast": false
-        },
-        {
-          "TopicName": "F\u00EDsico - Qu\u00EDmica",
-          "SubTopics": [
-            {
-              "TopicName": "Eletroqu\u00EDmica",
-              "SubTopics": [],
-              "IsLast": true
             }
           ],
           "IsLast": false
@@ -607,11 +579,6 @@
     {
       "TopicName": "Matem\u00E1tica",
       "SubTopics": [
-        {
-          "TopicName": "Derivadas",
-          "SubTopics": [],
-          "IsLast": true
-        },
         {
           "TopicName": "An\u00E1lise Combinat\u00F3ria",
           "SubTopics": [
@@ -624,15 +591,20 @@
           "IsLast": false
         },
         {
+          "TopicName": "Derivadas",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Geometria Espacial",
           "SubTopics": [
             {
-              "TopicName": "Retas e Planos",
+              "TopicName": "Esfera",
               "SubTopics": [],
               "IsLast": true
             },
             {
-              "TopicName": "Esfera",
+              "TopicName": "Retas e Planos",
               "SubTopics": [],
               "IsLast": true
             }
@@ -654,6 +626,34 @@
           "TopicName": "Sistemas Lineares",
           "SubTopics": [],
           "IsLast": true
+        }
+      ],
+      "IsLast": false
+    },
+    {
+      "TopicName": "Qu\u00EDmica",
+      "SubTopics": [
+        {
+          "TopicName": "F\u00EDsico - Qu\u00EDmica",
+          "SubTopics": [
+            {
+              "TopicName": "Eletroqu\u00EDmica",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Geral",
+          "SubTopics": [
+            {
+              "TopicName": "\u00D3xido-redu\u00E7\u00E3o",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
         }
       ],
       "IsLast": false

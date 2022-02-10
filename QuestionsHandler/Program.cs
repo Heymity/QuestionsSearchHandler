@@ -1,12 +1,11 @@
-#undef SEEDING
+#define SEEDING
 
 using MongoDB.Driver;
 
-//TODO: Sort the topics
 #if SEEDING
 
 using QuestionsHandler;
-DatabaseSeeder.LoadAllQuestionsToDBAndPrecomputeTopics();
+DatabaseSeeder.LoadAllQuestionsAndPrecomputeTopics();
 
 #else
 

@@ -9,15 +9,15 @@ public static class DatabaseSeeder
 {
     private const string QuestionsRootFolderPath = @"D:/Coding/SuperProfRE/QuestionsDB";
     
-    public static void LoadAllQuestionsToDBAndPrecomputeTopics()
+    public static void LoadAllQuestionsAndPrecomputeTopics()
     {
         var questionsToAdd = new List<Question>();
 
         var client = new MongoClient("mongodb://localhost:27017/local");
         var collection = client.GetDatabase("local").GetCollection<Question>("questions");
         
-        // ReSharper disable once StringLiteralTypo
         var rootTopic = new QuestionTopic(QuestionTopic.RootQuestionsTopic);
+        var questionFilters = new FiltersData();
         
         //var breakFlag = 0;
         foreach (var topicDirName in Directory.GetDirectories(QuestionsRootFolderPath))
@@ -32,8 +32,9 @@ public static class DatabaseSeeder
                 }
                 else
                     Console.WriteLine($"Question [{q.QuestionId}] ({q.Source}) already added");
+
+                AddQuestionFiltersToFiltersList(questionFilters, q);
                 
-                // ReSharper disable once StringLiteralTypo
                 var qTopics = QuestionTopic.TopicsListFromStringMatrix(q.Topics);
                 qTopics.ForEach(t => rootTopic.MergeTopic(t));
 
@@ -43,11 +44,23 @@ public static class DatabaseSeeder
 
             //break;
         }
-
+        
+        Console.WriteLine("Adding Questions to DB");
+        
         if (questionsToAdd.Count > 0)
             collection.InsertMany(questionsToAdd);
-
+        
+        Console.WriteLine("Questions Added");
+        
+        Console.WriteLine("Saving Topics");
+        
+        rootTopic.SortTopicsRecursively();
         WriteTopicsToFile(rootTopic);
+
+        Console.WriteLine("Saving Filters Data");
+        
+        questionFilters.Sort();
+        WriteFiltersToFile(questionFilters);
     }
 
     private static async void WriteTopicsToFile(QuestionTopic topic)
@@ -58,7 +71,21 @@ public static class DatabaseSeeder
         await JsonSerializer.SerializeAsync(createStream, topic, options);
         await createStream.DisposeAsync();
     }
+    
+    private static async void WriteFiltersToFile(FiltersData filtersData)
+    {
+        await using var createStream = File.Create(FiltersData.FiltersFileName);
+        
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        await JsonSerializer.SerializeAsync(createStream, filtersData, options);
+        await createStream.DisposeAsync();
+    }
 
+    private static void AddQuestionFiltersToFiltersList(FiltersData filtersData, Question question)
+    {
+        filtersData.LoadQuestion(question);
+    }
+    
     private static Question LoadQuestionFromFolder(string folder)
     {
         var files = Directory.GetFiles(folder);
