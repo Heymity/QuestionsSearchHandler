@@ -108,7 +108,7 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
     }
 
     async refreshQuestionTopics() {
-        let response = await fetch("api/Topics");
+        let response = await fetch("api/Filters/topics");
         let data = await response.json();
         console.log(data)
         this.setState({ questionTopic: data, loading: false });
@@ -124,6 +124,11 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
                 <h1>Question Filtering</h1>
                 <p>A place to filter the questions</p>
                 {contents}
+                <br/>
+                <br/>
+                <div>
+                    <button className="btn btn-success">See Questions</button>
+                </div>
             </div>
         )
     }

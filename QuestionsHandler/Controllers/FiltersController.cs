@@ -5,12 +5,12 @@ namespace QuestionsHandler.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TopicsController : ControllerBase
+public class FiltersController : ControllerBase
 {
     private readonly ILogger<QuestionsController> _logger;
     private readonly QuestionTopic _rootTopic;
 
-    public TopicsController(ILogger<QuestionsController> logger)
+    public FiltersController(ILogger<QuestionsController> logger)
     {
         _logger = logger;
         
@@ -24,10 +24,17 @@ public class TopicsController : ControllerBase
         _rootTopic = topics ?? new QuestionTopic(QuestionTopic.RootQuestionsTopic);
     }
 
-    [HttpGet]
+    [HttpGet("topics")]
     public QuestionTopic GetQuestionTopics()
     {
-        _logger.LogInformation($"Returning Topic {_rootTopic.TopicName} with {_rootTopic.SubTopics.Count} subtopics");
+        //_logger.LogInformation($"Returning Topic {_rootTopic.TopicName} with {_rootTopic.SubTopics.Count} subtopics");
+        return _rootTopic;
+    }
+    
+    [HttpGet("advFilters")]
+    public QuestionTopic GetFilters()
+    {
+        //_logger.LogInformation($"Returning Topic {_rootTopic.TopicName} with {_rootTopic.SubTopics.Count} subtopics");
         return _rootTopic;
     }
 }

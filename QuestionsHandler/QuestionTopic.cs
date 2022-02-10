@@ -7,6 +7,7 @@ public class QuestionTopic
 {
     // ReSharper disable once StringLiteralTypo
     public const string RootQuestionsTopic = "Ensino Médio";
+    //TODO for the next seeding, change the file extension to .precomp.json
     public const string TopicsFileName = "QuestionTopics.json";
     
     public string TopicName { get; init; }
