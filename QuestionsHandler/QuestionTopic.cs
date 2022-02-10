@@ -48,7 +48,7 @@ public class QuestionTopic
         SubTopics.ForEach(t => t.SortTopicsRecursively());
     }
 
-    public static List<QuestionTopic> TopicsListFromStringMatrix(string[][] topics)
+    public static List<QuestionTopic> TopicsListFromStringMatrix(IEnumerable<string[]> topics)
     {
         var topicsList = topics.Select(FromStringArray).ToList();
 

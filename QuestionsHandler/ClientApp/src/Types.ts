@@ -20,4 +20,12 @@ export type QuestionTopic = {
     isSelected :boolean
 }
 
+export type FiltersData = {
+    years: number[],
+    sources: string[],
+    difficulties: string[],
+    questionTypes: string[],
+    ratings: number[]
+}
+
 export type None = {}

@@ -9,19 +9,29 @@ public class FiltersController : ControllerBase
 {
     private readonly ILogger<QuestionsController> _logger;
     private readonly QuestionTopic _rootTopic;
+    private readonly FiltersData _filtersData;
 
     public FiltersController(ILogger<QuestionsController> logger)
     {
         _logger = logger;
-        
-        using var stream = new FileStream(QuestionTopic.TopicsFileName, FileMode.Open);
-        using var reader = new StreamReader(stream);
-        var jsonFromFile = reader.ReadToEnd();
-        var topics = JsonSerializer.Deserialize<QuestionTopic>(jsonFromFile);
+
+        var topics = GetFromJsonFile<QuestionTopic>(QuestionTopic.TopicsFileName);
         
         if (topics == null) _logger.LogCritical("No question topics precomputed file was found, initializing without it");
-
         _rootTopic = topics ?? new QuestionTopic(QuestionTopic.RootQuestionsTopic);
+        
+        var filters = GetFromJsonFile<FiltersData>(FiltersData.FiltersFileName);
+        
+        if (filters == null) _logger.LogCritical("No filters precomputed file was found, initializing without it");
+        _filtersData = filters ?? new FiltersData();
+    }
+
+    private static T? GetFromJsonFile<T>(string fileName)
+    {
+        using var stream = new FileStream(fileName, FileMode.Open);
+        using var reader = new StreamReader(stream);
+        var jsonFromFile = reader.ReadToEnd();
+        return JsonSerializer.Deserialize<T>(jsonFromFile);
     }
 
     [HttpGet("topics")]
@@ -32,9 +42,9 @@ public class FiltersController : ControllerBase
     }
     
     [HttpGet("advFilters")]
-    public QuestionTopic GetFilters()
+    public FiltersData GetFilters()
     {
         //_logger.LogInformation($"Returning Topic {_rootTopic.TopicName} with {_rootTopic.SubTopics.Count} subtopics");
-        return _rootTopic;
-    }
+        return _filtersData;
+    } 
 }
