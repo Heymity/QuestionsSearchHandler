@@ -98,7 +98,7 @@ code {
   height: 330px;
   scroll-behavior: smooth;
   overflow-y: auto;
-  scrollbar-color: #363636 #00000000 !important;
+  scrollbar-color: #626262 #00000000 !important;
   scrollbar-width: thin !important;
   scrollbar-gutter: both-edges;
 }
@@ -106,7 +106,7 @@ code {
 .extraFilter {
   border-width: 2px;
   border-radius: 5px;
-  border-color: #626262;
+  border-color: #9d9d9d;
   border-style: solid;
   
   padding: 5px;

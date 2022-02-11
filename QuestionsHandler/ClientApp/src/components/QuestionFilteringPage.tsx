@@ -1,6 +1,6 @@
 ﻿import {FiltersData, QuestionTopic} from "../Types";
 import React, {Component} from "react";
-import {QueueStoreEntry} from "workbox-background-sync/lib/QueueStore";
+import {act} from "react-dom/test-utils";
 
 interface IProps {
     
@@ -9,7 +9,8 @@ interface IProps {
 interface IState {
     questionTopic :QuestionTopic
     filtersData :FiltersData
-    loading :boolean
+    loading :boolean,
+    selectedFilters :FiltersData
 }
 
 interface TopicDisplayProps{
@@ -26,12 +27,20 @@ interface TopicState {
 
 interface ListItemProps {
     text :string
-    filterName :string
+    filterType :ExtraFilterType
 }
 
 interface ExtraFilterProps {
-    filterName :string
+    filterType :ExtraFilterType
     items :string[] | number[]
+}
+
+enum ExtraFilterType {
+    Year,
+    Source,
+    Difficulty,
+    Type,
+    Rating
 }
 
 export class Topic extends Component<TopicDisplayProps, TopicState> {
@@ -142,8 +151,9 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
         super(props);
         this.state = { 
             questionTopic: { topicName: "Loading...", isLast: true, subTopics: [], isSelected: false }, 
-            filtersData: {questionTypes: [], difficulties: [], ratings: [], sources: [], years:[]}, 
-            loading: true 
+            filtersData: { questionTypes: [], difficulties: [], ratings: [], sources: [], years:[] }, 
+            loading: true,
+            selectedFilters: { questionTypes: [], difficulties: [], ratings: [], sources: [], years:[] }
         }
         this.ExtraFilter = this.ExtraFilter.bind(this)
     }
@@ -167,12 +177,108 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
     }
 
     ExtraFilter = (props :ExtraFilterProps) => {
+        const getNameFromType = (fType :ExtraFilterType) :string => {
+            switch (fType) {
+                case ExtraFilterType.Type:
+                    return "Tipo"
+                case ExtraFilterType.Rating:
+                    return "Avaliação"
+                case ExtraFilterType.Source:
+                    return "Fonte"
+                case ExtraFilterType.Difficulty:
+                    return "Dificuldade"
+                case ExtraFilterType.Year:
+                    return "Ano"
+            }
+        }
+        
         const ListItem = (props :ListItemProps) => {
-            let id = props.text.replace(" ", "-") + "-" + props.filterName
+            const filterSelected = (active :boolean, fType :ExtraFilterType) => {
+                let sFilters = this.state.selectedFilters;
+                let index = 0;
+                switch (fType) {
+                    case ExtraFilterType.Year:
+                        index = sFilters.years.indexOf(+props.text)
+                        if (index > -1) {
+                            if (!active)
+                                sFilters.years = sFilters.years.filter(f => f !== +props.text)
+                        }
+                        else {
+                            if (active)
+                                sFilters.years.push(+props.text)
+                        }
+                        break;
+                    case ExtraFilterType.Difficulty:
+                        index = sFilters.difficulties.indexOf(props.text)
+                        if (index > -1) {
+                            if (!active)
+                                sFilters.difficulties = sFilters.difficulties.filter(f => f !== props.text)
+                        }
+                        else {
+                            if (active)
+                                sFilters.difficulties.push(props.text)
+                        }
+                        break;
+                    case ExtraFilterType.Rating:
+                        index = sFilters.ratings.indexOf(+props.text)
+                        if (index > -1) {
+                            if (!active)
+                                sFilters.ratings = sFilters.ratings.filter(f => f !== +props.text)
+                        }
+                        else {
+                            if (active)
+                                sFilters.ratings.push(+props.text)
+                        }
+                        break;
+                    case ExtraFilterType.Source:
+                        index = sFilters.sources.indexOf(props.text)
+                        if (index > -1) {
+                            if (!active)
+                                sFilters.sources = sFilters.sources.filter(f => f !== props.text)
+                        }
+                        else {
+                            if (active)
+                                sFilters.sources.push(props.text)
+                        }
+                        break;
+                    case ExtraFilterType.Type:
+                        index = sFilters.questionTypes.indexOf(props.text)
+                        if (index > -1) {
+                            if (!active)
+                                sFilters.questionTypes = sFilters.questionTypes.filter(f => f !== props.text)
+                        }
+                        else {
+                            if (active)
+                                sFilters.questionTypes.push(props.text)
+                        }
+                        break;
+                }
+
+                this.setState({ selectedFilters: sFilters })
+            }
+            
+            const isFilterActive = (type :ExtraFilterType) :boolean => {
+                switch (type) {
+                    case ExtraFilterType.Year:
+                        return this.state.selectedFilters.years.includes(+props.text)
+                    case ExtraFilterType.Difficulty:
+                        return this.state.selectedFilters.difficulties.includes(props.text)
+                    case ExtraFilterType.Rating:
+                        return this.state.selectedFilters.ratings.includes(+props.text)
+                    case ExtraFilterType.Source:
+                        return this.state.selectedFilters.sources.includes(props.text)
+                    case ExtraFilterType.Type:
+                        return this.state.selectedFilters.questionTypes.includes(props.text);
+                }
+                
+                return false;
+            }
+            
+            let id = props.text.replace(" ", "-") + "-" + props.filterType.toString()
             
             return (
                 <div>
-                    <input type="checkbox" className={"form-check-input me-2"} /*checked={} onChange={}*/ id={id}/>
+                    <input type="checkbox" className={"form-check-input me-2"} checked={isFilterActive(props.filterType)} onChange={event => filterSelected(event.target.checked, props.filterType)} id={id}/>
                     <label htmlFor={id}>{props.text}</label>
                 </div>
             )
@@ -180,14 +286,16 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
         
         return (
             <div className="extraFilter">
-                <h5>{props.filterName}</h5>
+                <h5>{getNameFromType(props.filterType)}</h5>
                 <div className="extraFiltersContainer">
-                    {props.items.map(i => <ListItem text={i.toString()} filterName={props.filterName}/>)}
+                    {props.items.map(i => <ListItem text={i.toString()} filterType={props.filterType}/>)}
                 </div>
             </div>)
     }
     
     render() {
+        let rootTopic = (<Topic questionTopic={this.state.questionTopic} startOpen={true}/>)
+        
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
             : <Topic questionTopic={this.state.questionTopic} startOpen={true}/>
@@ -198,11 +306,11 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
                 <p>A place to filter the questions</p>
                 {contents}
                 <div className="extraFiltersDiv">
-                    <this.ExtraFilter filterName="Fonte" items={this.state.filtersData.sources}/>
-                    <this.ExtraFilter filterName="Ano" items={this.state.filtersData.years}/>
-                    <this.ExtraFilter filterName="Tipo" items={this.state.filtersData.questionTypes}/>
-                    <this.ExtraFilter filterName="Dificuldade" items={this.state.filtersData.difficulties}/>
-                    <this.ExtraFilter filterName="Avaliação" items={this.state.filtersData.ratings}/>
+                    <this.ExtraFilter filterType={ExtraFilterType.Source} items={this.state.filtersData.sources}/>
+                    <this.ExtraFilter filterType={ExtraFilterType.Year} items={this.state.filtersData.years}/>
+                    <this.ExtraFilter filterType={ExtraFilterType.Type} items={this.state.filtersData.questionTypes}/>
+                    <this.ExtraFilter filterType={ExtraFilterType.Difficulty} items={this.state.filtersData.difficulties}/>
+                    <this.ExtraFilter filterType={ExtraFilterType.Rating} items={this.state.filtersData.ratings}/>
                 </div>
                 <br/>
                 <br/>
