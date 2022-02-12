@@ -8,14 +8,15 @@ public class FiltersData
     public List<string> Sources { get; set; }
     public List<string> Difficulties { get; set; }
     public List<string> QuestionTypes { get; set; }
-    public int[] Ratings { get; } = { 1, 2, 3, 4, 5 };
-
+    public  List<int> Ratings  { get; set; }
+    
     public FiltersData()
     {
         Years = new List<int>();
         Sources = new List<string>();
         Difficulties = new List<string>();
         QuestionTypes = new List<string>();
+        Ratings = new List<int> {1, 2, 3, 4, 5};
     }
 
     public void Sort()

@@ -143,10 +143,31 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
             </div>
         )
     }
+    
+    
+    getQuestionTopicRecursively() :QuestionTopic {
+        let qTopic :QuestionTopic;
+        qTopic = { ...this.props.questionTopic };
+        qTopic = this.uncheckTopicsForAPIRequest(qTopic)
+        
+        return qTopic;
+    }
+    
+    uncheckTopicsForAPIRequest(topic :QuestionTopic) :QuestionTopic {
+        if (topic.isLast) return topic
+        
+        if (!this.areAllSubTopicsSelectedRecursively(topic)) topic.isSelected = false;
+        
+        topic.subTopics.forEach(t => this.uncheckTopicsForAPIRequest(t))
+        
+        return topic;
+    }
 }
 
 
 export class QuestionFilteringPage extends Component<IProps, IState> {
+    RootTopic :React.RefObject<Topic>;
+    
     constructor(props :IProps) {
         super(props);
         this.state = { 
@@ -156,6 +177,9 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
             selectedFilters: { questionTypes: [], difficulties: [], ratings: [], sources: [], years:[] }
         }
         this.ExtraFilter = this.ExtraFilter.bind(this)
+        this.SubmitFiltersAndGetQuestions = this.SubmitFiltersAndGetQuestions.bind(this)
+        
+        this.RootTopic = React.createRef();
     }
     
     async componentDidMount() {
@@ -293,18 +317,36 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
             </div>)
     }
     
-    render() {
-        let rootTopic = (<Topic questionTopic={this.state.questionTopic} startOpen={true}/>)
+    SubmitFiltersAndGetQuestions = async () => {
+        let rootTopic = this.RootTopic.current;
+        if (rootTopic === null) {
+            console.error("Root topic is null!")
+            return
+        }
         
+        let tFilters = rootTopic.getQuestionTopicRecursively()
+        
+        let requestBody = {
+            AdvancedFilters: this.state.selectedFilters,
+            TopicFilters: tFilters
+        }
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
+        };
+        
+        let response = await fetch('api/Questions/filteredQuestions', requestOptions)
+        let data = await response.json()
+        console.log(data)
+    }
+    
+    render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : <Topic questionTopic={this.state.questionTopic} startOpen={true}/>
-        
-        return (
-            <div>
-                <h1>Question Filtering</h1>
-                <p>A place to filter the questions</p>
-                {contents}
+            : (<div>
+                <Topic questionTopic={this.state.questionTopic} startOpen={true} ref={this.RootTopic}/>
                 <div className="extraFiltersDiv">
                     <this.ExtraFilter filterType={ExtraFilterType.Source} items={this.state.filtersData.sources}/>
                     <this.ExtraFilter filterType={ExtraFilterType.Year} items={this.state.filtersData.years}/>
@@ -312,10 +354,17 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
                     <this.ExtraFilter filterType={ExtraFilterType.Difficulty} items={this.state.filtersData.difficulties}/>
                     <this.ExtraFilter filterType={ExtraFilterType.Rating} items={this.state.filtersData.ratings}/>
                 </div>
+            </div>)
+        
+        return (
+            <div>
+                <h1>Question Filtering</h1>
+                <p>A place to filter the questions</p>
+                {contents}
                 <br/>
                 <br/>
                 <div>
-                    <button className="btn btn-success">See Questions</button>
+                    <button className="btn btn-success" onClick={this.SubmitFiltersAndGetQuestions}>See Questions</button>
                 </div>
             </div>
         )

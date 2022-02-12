@@ -31,7 +31,7 @@ public class Question
     public string[][] Topics { get; set; }
     
     [BsonElement("Rating")]
-    public byte Rating { get; set; }
+    public int Rating { get; set; }
     
     [BsonElement("QuestionData")]
     public string QuestionData { get; set; }

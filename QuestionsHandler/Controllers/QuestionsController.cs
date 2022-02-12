@@ -19,8 +19,6 @@ public class QuestionsController : ControllerBase
     [HttpGet("{from:int?}/{to:int?}")]
     public IEnumerable<Question> Index(int? from = 0, int? to = -1)
     {
-        _logger.Log(LogLevel.Information, $"Querying Questions from {from} to {to}");
-        
         var queryFrom = from ?? 0;
         var queryTo = (to ?? 1000) < queryFrom ? new Index(0, true) : to ?? 1000;
         return _questionsCollection
@@ -47,5 +45,21 @@ public class QuestionsController : ControllerBase
     public Question GetQuestionOfId(int qId)
     {
         return _questionsCollection.Find(q => q.QuestionId == qId).First();
+    }
+
+    [HttpPost("filteredQuestions")]
+    public IEnumerable<Question> GetQuestionAccordingToFilter([FromBody] QuestionsFilterRequestData filter)
+    {
+        _logger.LogInformation($"Year first filter: {filter.AdvancedFilters.Ratings.Count}\nIs root topic selected {filter.TopicFilters.IsSelected}");
+
+        var quest = _questionsCollection
+            .AsQueryable()
+            .Where(q => filter.AdvancedFilters.Years.Count <= 0 || filter.AdvancedFilters.Years.Contains(q.Year))
+            .Where(q => filter.AdvancedFilters.Ratings.Count <= 0 || filter.AdvancedFilters.Ratings.Contains(q.Rating))
+            .Where(q => filter.AdvancedFilters.Sources.Count <= 0 || filter.AdvancedFilters.Sources.Contains(q.Source))
+            .Where(q => filter.AdvancedFilters.Difficulties.Count <= 0 || filter.AdvancedFilters.Difficulties.Contains(q.Difficulty))
+            .Where(q => filter.AdvancedFilters.QuestionTypes.Count <= 0 || filter.AdvancedFilters.QuestionTypes.Contains(q.QuestionType));
+        
+        return quest.ToList();
     }
 }
