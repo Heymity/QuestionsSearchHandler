@@ -1,6 +1,6 @@
-﻿import {FiltersData, QuestionTopic} from "../Types";
+﻿import {FiltersData, Question, QuestionTopic} from "../Types";
 import React, {Component} from "react";
-import {act} from "react-dom/test-utils";
+import { useHistory } from 'react-router-dom';
 
 interface IProps {
     
@@ -340,6 +340,9 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
         let response = await fetch('api/Questions/filteredQuestions', requestOptions)
         let data = await response.json()
         console.log(data)
+
+        const history = useHistory<Question[]>();
+        history.push({ pathname: '/list-questions', state: data });
     }
     
     render() {

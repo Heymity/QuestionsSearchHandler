@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
-        <Route path='/fetch-data' component={ListQuestions} />
+        <Route path='/list-questions' component={ListQuestions} />
         <Route path='/filter-questions' component={QuestionFilteringPage} />
       </Layout>
     );

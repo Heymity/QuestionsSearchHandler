@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Question} from "../Types";
 import {QuestionDisplay} from "./QuestionRendering";
+import {RouteComponentProps} from "react-router-dom";
 
-interface IProps {
+interface IProps extends RouteComponentProps {
 }
 
 interface IState {
@@ -44,6 +45,7 @@ export class ListQuestions extends Component<IProps, IState> {
       
       expandedQuestion: -1
     };
+    this.props.history.location.state // access state to get questions
   }
 
   componentDidMount() {
@@ -51,6 +53,7 @@ export class ListQuestions extends Component<IProps, IState> {
   }
 
   render() {
+    
     const QuestionsTable = () => {
       let sortedQuestions = this.state.questions
       
