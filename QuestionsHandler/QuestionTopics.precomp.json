@@ -38,6 +38,28 @@
           "IsLast": false
         },
         {
+          "TopicName": "Gen\u00E9tica",
+          "SubTopics": [
+            {
+              "TopicName": "Grupos Sangu\u00EDneos",
+              "SubTopics": [
+                {
+                  "TopicName": "Sistema ABO",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
+              "TopicName": "Imunologia e Imuniza\u00E7\u00E3o",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
           "TopicName": "Reino Animal / Protoctistas",
           "SubTopics": [
             {
@@ -253,6 +275,11 @@
               "TopicName": "Cinem\u00E1tica",
               "SubTopics": [
                 {
+                  "TopicName": "Fundamentos",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
+                {
                   "TopicName": "Gr\u00E1ficos",
                   "SubTopics": [],
                   "IsLast": true
@@ -385,8 +412,24 @@
               "IsLast": false
             },
             {
+              "TopicName": "Impulso e Quantidade de Movimento.",
+              "SubTopics": [
+                {
+                  "TopicName": "Centro de Massa",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            },
+            {
               "TopicName": "Movimento Harm\u00F4nico Simples",
               "SubTopics": [
+                {
+                  "TopicName": "Cinem\u00E1tica",
+                  "SubTopics": [],
+                  "IsLast": true
+                },
                 {
                   "TopicName": "Din\u00E2mica",
                   "SubTopics": [],
@@ -577,13 +620,66 @@
       "IsLast": false
     },
     {
+      "TopicName": "Geografia",
+      "SubTopics": [
+        {
+          "TopicName": "Geral",
+          "SubTopics": [
+            {
+              "TopicName": "F\u00EDsica",
+              "SubTopics": [
+                {
+                  "TopicName": "Astronomia",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            }
+          ],
+          "IsLast": false
+        }
+      ],
+      "IsLast": false
+    },
+    {
       "TopicName": "Matem\u00E1tica",
       "SubTopics": [
         {
           "TopicName": "An\u00E1lise Combinat\u00F3ria",
           "SubTopics": [
             {
+              "TopicName": "Arranjo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Combina\u00E7\u00E3o",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
               "TopicName": "Permuta\u00E7\u00E3o",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Princ\u00EDpio Aditivo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Princ\u00EDpio das Gavetas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Princ\u00EDpio Fundamental da Contagem",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Princ\u00EDpio Multiplicativo",
               "SubTopics": [],
               "IsLast": true
             }
@@ -591,20 +687,351 @@
           "IsLast": false
         },
         {
+          "TopicName": "Aritm\u00E9tica",
+          "SubTopics": [
+            {
+              "TopicName": "M\u00FAltiplos e Divisores",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Problemas sobre as 4 Opera\u00E7\u00F5es",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Sistema de Numera\u00E7\u00E3o e M\u00E9trico Decimal",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Bin\u00F4mio de Newton",
+          "SubTopics": [
+            {
+              "TopicName": "Fatorial",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Outros",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Complexos",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Conjuntos",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Conjuntos Num\u00E9ricos",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Constru\u00E7\u00F5es Geom\u00E9tricas",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Derivadas",
           "SubTopics": [],
           "IsLast": true
         },
         {
+          "TopicName": "Derivadas e Integrais",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Determinantes",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Equa\u00E7\u00F5es",
+          "SubTopics": [
+            {
+              "TopicName": "Equa\u00E7\u00E3o do Primeiro Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Equa\u00E7\u00E3o do Segundo Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Equa\u00E7\u00E3o do Terceiro Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Equa\u00E7\u00F5es Redut\u00EDveis ao Segundo Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Modular",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Equa\u00E7\u00F5es polinomiais",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Exponenciais",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Express\u00F5es e Fra\u00E7\u00F5es Alg\u00E9bricas",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Express\u00F5es Num\u00E9ricas",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Fatora\u00E7\u00E3o e Produtos Not\u00E1veis",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Fun\u00E7\u00F5es",
+          "SubTopics": [
+            {
+              "TopicName": "Fun\u00E7\u00E3o Afim",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Bijetora",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Composta",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Exponencial",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Inversa",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Logar\u00EDtmica",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Modular",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00E3o Quadr\u00E1tica",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00F5es Definidas por V\u00E1rias Senten\u00E7as",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Gr\u00E1ficos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Miscel\u00E2nea",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Paridade",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Polinomial",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Geometria Anal\u00EDtica",
+          "SubTopics": [
+            {
+              "TopicName": "Circunfer\u00EAncia",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "C\u00F4nicas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fundamentos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Lugar Geom\u00E9trico",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Reta",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
           "TopicName": "Geometria Espacial",
           "SubTopics": [
+            {
+              "TopicName": "Cilindros",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Cones",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Diedros e Triedros",
+              "SubTopics": [],
+              "IsLast": true
+            },
             {
               "TopicName": "Esfera",
               "SubTopics": [],
               "IsLast": true
             },
             {
+              "TopicName": "Pir\u00E2mides",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Prismas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
               "TopicName": "Retas e Planos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "S\u00F3lidos Inscritos e Circunscritos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Superf\u00EDcie Poli\u00E9drica e Poliedros",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Geometria Plana",
+          "SubTopics": [
+            {
+              "TopicName": "\u00C1rea das Figuras Planas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Circunfer\u00EAncia e C\u00EDrculo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Congru\u00EAncia de Tri\u00E2ngulos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fundamentos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Pol\u00EDgonos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Pol\u00EDgonos Regulares",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Pontos Not\u00E1veis do Tri\u00E2ngulo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Pot\u00EAncia de Ponto",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Quadril\u00E1teros Not\u00E1veis",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Rela\u00E7\u00F5es M\u00E9tricas em Tri\u00E2ngulos Quaisquer",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Rela\u00E7\u00F5es M\u00E9tricas no Tri\u00E2ngulo Ret\u00E2ngulo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Segmentos Proporcionais",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Semelhan\u00E7a de Tri\u00E2ngulos",
               "SubTopics": [],
               "IsLast": true
             }
@@ -618,14 +1045,210 @@
               "TopicName": "Porcentagem",
               "SubTopics": [],
               "IsLast": true
+            },
+            {
+              "TopicName": "Raz\u00F5es e Propor\u00E7\u00F5es",
+              "SubTopics": [],
+              "IsLast": true
             }
           ],
           "IsLast": false
         },
         {
+          "TopicName": "Inequa\u00E7\u00F5es",
+          "SubTopics": [
+            {
+              "TopicName": "Inequa\u00E7\u00E3o do Primeiro Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Inequa\u00E7\u00E3o do Segundo Grau",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Logar\u00EDtmica",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Modular",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Produto",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Limites",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Logar\u00EDtmos",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Matem\u00E1tica Financeira",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Matrizes",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "M\u00E9dias",
+          "SubTopics": [
+            {
+              "TopicName": "Aritm\u00E9tica",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "No\u00E7\u00F5es de L\u00F3gica Matem\u00E1tica",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Polin\u00F4mios",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Potencia\u00E7\u00E3o",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Probabilidades",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Progress\u00E3o Aritm\u00E9tica",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Progress\u00E3o Geom\u00E9trica",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
+          "TopicName": "Radicia\u00E7\u00E3o",
+          "SubTopics": [],
+          "IsLast": true
+        },
+        {
           "TopicName": "Sistemas Lineares",
           "SubTopics": [],
           "IsLast": true
+        },
+        {
+          "TopicName": "Trigonometria",
+          "SubTopics": [
+            {
+              "TopicName": "Arco Duplo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Arcos na Circunfer\u00EAncia",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Equa\u00E7\u00F5es",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00F5es Trigonom\u00E9tricas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Fun\u00E7\u00F5es Trigonom\u00E9tricas Inversas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Inequa\u00E7\u00F5es",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Lei dos Cossenos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Lei dos Senos",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Outras Rela\u00E7\u00F5es Trigonom\u00E9tricas",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Raz\u00F5es Trigonom\u00E9tricas no Tri\u00E2ngulo Ret\u00E2ngulo",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Redu\u00E7\u00E3o ao Primeiro Quadrante",
+              "SubTopics": [],
+              "IsLast": true
+            },
+            {
+              "TopicName": "Soma de Arcos",
+              "SubTopics": [],
+              "IsLast": true
+            }
+          ],
+          "IsLast": false
+        },
+        {
+          "TopicName": "Vetores",
+          "SubTopics": [],
+          "IsLast": true
+        }
+      ],
+      "IsLast": false
+    },
+    {
+      "TopicName": "Portugu\u00EAs",
+      "SubTopics": [
+        {
+          "TopicName": "Interpreta\u00E7\u00E3o de Textos",
+          "SubTopics": [
+            {
+              "TopicName": "Textos Liter\u00E1rios em Verso",
+              "SubTopics": [
+                {
+                  "TopicName": "\u00C1lvares de Azevedo",
+                  "SubTopics": [],
+                  "IsLast": true
+                }
+              ],
+              "IsLast": false
+            }
+          ],
+          "IsLast": false
         }
       ],
       "IsLast": false

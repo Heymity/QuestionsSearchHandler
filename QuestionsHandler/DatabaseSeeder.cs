@@ -18,8 +18,7 @@ public static class DatabaseSeeder
         
         var rootTopic = new QuestionTopic(QuestionTopic.RootQuestionsTopic);
         var questionFilters = new FiltersData();
-        
-        //var breakFlag = 0;
+   
         foreach (var topicDirName in Directory.GetDirectories(QuestionsRootFolderPath))
         {
             foreach (var questionIdDirName in Directory.GetDirectories(topicDirName))
@@ -37,12 +36,7 @@ public static class DatabaseSeeder
                 
                 var qTopics = QuestionTopic.TopicsListFromStringMatrix(q.Topics);
                 qTopics.ForEach(t => rootTopic.MergeTopic(t));
-
-                //breakFlag++;
-                //if(breakFlag>= 10) break;
             }
-
-            //break;
         }
         
         Console.WriteLine("Adding Questions to DB");

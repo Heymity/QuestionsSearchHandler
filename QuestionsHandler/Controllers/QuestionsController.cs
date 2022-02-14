@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace QuestionsHandler.Controllers;
@@ -56,6 +59,33 @@ public class QuestionsController : ControllerBase
             .Where(q => filter.TopicFilters.Contains(q.Topics));
         
         return quests.ToList();
+    }
+
+    [HttpPost("addQuestion")]
+    public async Task<IActionResult> AddQuestionFromRaw()
+    {
+        // TODO: when this is done, the topics need to be updated and when the app quits saved to the precomputed file
+        // TODO: when this is done, the filters need to be updated and when the app quits saved to the precomputed file (This is not very important as almost all filters are already loaded)
+        string rawQuestionsJson;
+        using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
+        {
+            rawQuestionsJson = await reader.ReadToEndAsync();
+        }
+        
+        var bsonDocument = BsonDocument.Parse(rawQuestionsJson);
+        var question = BsonSerializer.Deserialize<Question>(bsonDocument);
+
+        try
+        {
+            await _questionsCollection.InsertOneAsync(question);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e.ToString());
+            return BadRequest();
+        }
+
+        return Ok();
     }
     
     private static Question RemoveImageData(Question question)

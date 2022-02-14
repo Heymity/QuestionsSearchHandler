@@ -159,8 +159,6 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
         if (!topic.isSelected) return null
         if (topic.isLast && topic.isSelected) return topic
         
-        //if (!this.areAllSubTopicsSelectedRecursively(topic)) topic.isSelected = false;
-
         topic.subTopics = topic.subTopics
             .map(t => this.prepareTopicForAPIRequest(t))
             .filter(t => t != null)

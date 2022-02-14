@@ -152,7 +152,7 @@ export class ListQuestions extends Component<IProps, IState> {
       
       return (
           <div>
-            <h1 id="tableLabel">Questions List {this.state.page}</h1>
+            <h1 id="tableLabel">Questions List</h1>
             <p>A list of all the questions ({this.state.questionsCount})</p>
             {contents}
           </div>
@@ -164,7 +164,7 @@ export class ListQuestions extends Component<IProps, IState> {
             <button className="btn btn-outline-info" onClick={() => this.setState({ renderingQuestion: false })}>← Go back to list</button>
             <div className="btn-group question-page-nav">
               <button className="btn btn-warning" onClick={goOneQuestionBack}>← Questão anterior</button>
-              <input type="text" className="question-nav-input" value={`${this.state.selectedQuestionIndex + 1}/`/*${this.state.questionsCount}`*/} onChange={(event) => renderQuestion(+event.target.value)}/>
+              <input type="text" className="question-nav-input" value={`${this.state.selectedQuestionIndex + 1}`/*/${this.state.questionsCount}`*/} onChange={(event) => renderQuestion(+event.target.value)}/>
               <button className="btn btn-warning" onClick={goOneQuestionForwards}>Próxima questão →</button>
             </div>
             <QuestionDisplay question={this.state.selectedQuestion as Question}/>
