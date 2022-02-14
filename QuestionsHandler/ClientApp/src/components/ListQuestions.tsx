@@ -32,13 +32,13 @@ export class ListQuestions extends Component<IProps, IState> {
   constructor(props :IProps) {
     super(props);
 
-    console.log("history.location.state:", this.props.history.location.state) // access state to get questions
+    console.log("history.location.state:", this.props.history.location.state)
     
     let historyState = this.props.history.location.state as QuestionFilterReturnData;
     let loadingValue = true;
     let questionsValue :Question[] = [];
     let dontFetchValue = false;
-    if (this.props.history.location.state !== null && historyState.questions !== undefined && historyState.questions !== null && historyState.questions.length > 0){
+    if (historyState !== undefined && this.props.history.location.state !== null && historyState.questions !== undefined && historyState.questions !== null && historyState.questions.length > 0){
       loadingValue = false;
       questionsValue = historyState.questions;
       dontFetchValue = true;
@@ -164,7 +164,7 @@ export class ListQuestions extends Component<IProps, IState> {
             <button className="btn btn-outline-info" onClick={() => this.setState({ renderingQuestion: false })}>← Go back to list</button>
             <div className="btn-group question-page-nav">
               <button className="btn btn-warning" onClick={goOneQuestionBack}>← Questão anterior</button>
-              <input type="text" className="question-nav-input" value={this.state.selectedQuestionIndex} onChange={(event) => renderQuestion(+event.target.value)}/>
+              <input type="text" className="question-nav-input" value={`${this.state.selectedQuestionIndex + 1}/`/*${this.state.questionsCount}`*/} onChange={(event) => renderQuestion(+event.target.value)}/>
               <button className="btn btn-warning" onClick={goOneQuestionForwards}>Próxima questão →</button>
             </div>
             <QuestionDisplay question={this.state.selectedQuestion as Question}/>

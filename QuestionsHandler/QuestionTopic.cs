@@ -1,4 +1,6 @@
-﻿namespace QuestionsHandler;
+﻿using System.Text;
+
+namespace QuestionsHandler;
 
 public class QuestionTopic
 {
@@ -18,8 +20,6 @@ public class QuestionTopic
 
     public bool MergeTopic(QuestionTopic topic)
     {
-        //Console.WriteLine(topic.TopicName.Unidecode());
-        //the match is not with the child to child, but rather parent with child (EM->Fis) - (Fis->...)
         foreach (var questionSubTopic in SubTopics)
         {
             foreach (var mergeTopicSubTopic in topic.SubTopics.Where(mergeTopicSubTopic => AreOfSameTopic(questionSubTopic, mergeTopicSubTopic)))
@@ -36,8 +36,27 @@ public class QuestionTopic
             SubTopics.Add(topic);
         return true;
 
-        //TODO: Pretty sure there is no need for the .Unicode here, the bug was elsewhere
         bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName == b.TopicName;
+    }
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+
+        builder.Append(TopicName);
+        if (IsLast) return builder.ToString();
+        
+        builder.AppendLine(":");
+        builder.Append("  ");
+        SubTopics.ForEach(st =>
+        {
+            builder.Append(' ');
+            builder.Append('└');
+            builder.Append(st);
+            builder.AppendLine();
+        });
+
+        return builder.ToString();
     }
 
     public void SortTopicsRecursively()

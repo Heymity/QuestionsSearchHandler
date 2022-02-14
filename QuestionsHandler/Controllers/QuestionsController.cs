@@ -43,9 +43,7 @@ public class QuestionsController : ControllerBase
     [HttpPost("filteredQuestions")]
     public IEnumerable<Question> GetQuestionAccordingToFilter([FromBody] QuestionsFilterRequestData filter)
     {
-        _logger.LogInformation($"Year first filter: {filter.AdvancedFilters.Ratings.Count}\nIs root topic selected {filter.TopicFilters.IsSelected}");
-
-        var quest = _questionsCollection
+        var quests = _questionsCollection
             .AsQueryable()
             .Select(RemoveImageData)
             .Where(q => filter.AdvancedFilters.Years.Count <= 0 || filter.AdvancedFilters.Years.Contains(q.Year))
@@ -57,7 +55,7 @@ public class QuestionsController : ControllerBase
                         filter.AdvancedFilters.QuestionTypes.Contains(q.QuestionType))
             .Where(q => filter.TopicFilters.Contains(q.Topics));
         
-        return quest.ToList();
+        return quests.ToList();
     }
     
     private static Question RemoveImageData(Question question)

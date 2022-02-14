@@ -146,20 +146,25 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
     
     
     getQuestionTopicRecursively() :QuestionTopic {
-        let qTopic :QuestionTopic;
+        let qTopic :QuestionTopic | null;
         qTopic = { ...this.props.questionTopic };
-        qTopic = this.prepareTopicForAPIRequest(qTopic) as QuestionTopic
+        qTopic = this.prepareTopicForAPIRequest(qTopic) 
+        if (qTopic === null)
+            qTopic = { ...this.props.questionTopic }
         
-        return qTopic;
+        return qTopic as QuestionTopic;
     }
 
     prepareTopicForAPIRequest(topic :QuestionTopic) :QuestionTopic | null {
+        if (!topic.isSelected) return null
         if (topic.isLast && topic.isSelected) return topic
         
         //if (!this.areAllSubTopicsSelectedRecursively(topic)) topic.isSelected = false;
-        
-        topic.subTopics.map(t => this.prepareTopicForAPIRequest(t))
-        topic.subTopics = topic.subTopics.filter(t => t !== null);
+
+        topic.subTopics = topic.subTopics
+            .map(t => this.prepareTopicForAPIRequest(t))
+            .filter(t => t != null)
+            .map(t => t as QuestionTopic);
         
         if (topic.isSelected) return topic
         return null;
