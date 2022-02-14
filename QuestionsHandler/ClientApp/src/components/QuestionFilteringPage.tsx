@@ -1,4 +1,4 @@
-﻿import {FiltersData, Question, QuestionTopic} from "../Types";
+﻿import {FiltersData, Question, QuestionFilterReturnData, QuestionTopic} from "../Types";
 import React, {Component} from "react";
 import { useHistory } from 'react-router-dom';
 
@@ -148,19 +148,21 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
     getQuestionTopicRecursively() :QuestionTopic {
         let qTopic :QuestionTopic;
         qTopic = { ...this.props.questionTopic };
-        qTopic = this.uncheckTopicsForAPIRequest(qTopic)
+        qTopic = this.prepareTopicForAPIRequest(qTopic) as QuestionTopic
         
         return qTopic;
     }
-    
-    uncheckTopicsForAPIRequest(topic :QuestionTopic) :QuestionTopic {
-        if (topic.isLast) return topic
+
+    prepareTopicForAPIRequest(topic :QuestionTopic) :QuestionTopic | null {
+        if (topic.isLast && topic.isSelected) return topic
         
-        if (!this.areAllSubTopicsSelectedRecursively(topic)) topic.isSelected = false;
+        //if (!this.areAllSubTopicsSelectedRecursively(topic)) topic.isSelected = false;
         
-        topic.subTopics.forEach(t => this.uncheckTopicsForAPIRequest(t))
+        topic.subTopics.map(t => this.prepareTopicForAPIRequest(t))
+        topic.subTopics = topic.subTopics.filter(t => t !== null);
         
-        return topic;
+        if (topic.isSelected) return topic
+        return null;
     }
 }
 
@@ -177,8 +179,7 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
             selectedFilters: { questionTypes: [], difficulties: [], ratings: [], sources: [], years:[] }
         }
         this.ExtraFilter = this.ExtraFilter.bind(this)
-        this.SubmitFiltersAndGetQuestions = this.SubmitFiltersAndGetQuestions.bind(this)
-        
+
         this.RootTopic = React.createRef();
     }
     
@@ -317,35 +318,42 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
             </div>)
     }
     
-    SubmitFiltersAndGetQuestions = async () => {
-        let rootTopic = this.RootTopic.current;
-        if (rootTopic === null) {
-            console.error("Root topic is null!")
-            return
-        }
-        
-        let tFilters = rootTopic.getQuestionTopicRecursively()
-        
-        let requestBody = {
-            AdvancedFilters: this.state.selectedFilters,
-            TopicFilters: tFilters
-        }
-        
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(requestBody)
-        };
-        
-        let response = await fetch('api/Questions/filteredQuestions', requestOptions)
-        let data = await response.json()
-        console.log(data)
-
-        const history = useHistory<Question[]>();
-        history.push({ pathname: '/list-questions', state: data });
-    }
-    
     render() {
+        const SeeQuestionsBtn = () => {
+            const history = useHistory<QuestionFilterReturnData>();
+            
+            const SubmitFiltersAndGetQuestions = async () => {
+                let rootTopic = this.RootTopic.current;
+                if (rootTopic === null) {
+                    console.error("Root topic is null!")
+                    return
+                }
+
+                let tFilters = rootTopic.getQuestionTopicRecursively()
+
+                let requestBody = {
+                    AdvancedFilters: this.state.selectedFilters,
+                    TopicFilters: tFilters
+                }
+
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                };
+
+                let response = await fetch('api/Questions/filteredQuestions', requestOptions)
+                let data = await response.json()
+                console.log(data)
+                
+                history.push({ pathname: '/list-questions', state: { questions: data } });
+            }
+            
+            return (
+                <button className="btn btn-success" onClick={SubmitFiltersAndGetQuestions}>See Questions</button>
+            )
+        }
+        
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
             : (<div>
@@ -367,7 +375,7 @@ export class QuestionFilteringPage extends Component<IProps, IState> {
                 <br/>
                 <br/>
                 <div>
-                    <button className="btn btn-success" onClick={this.SubmitFiltersAndGetQuestions}>See Questions</button>
+                    <SeeQuestionsBtn/>
                 </div>
             </div>
         )

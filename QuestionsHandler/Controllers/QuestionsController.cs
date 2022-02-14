@@ -26,13 +26,6 @@ public class QuestionsController : ControllerBase
             .Select(RemoveImageData)
             .OrderByDescending(q => q.Year)
             .Take(new Range(queryFrom, queryTo));
-
-        Question RemoveImageData(Question question)
-        {
-            question.AnswerData = "";
-            question.QuestionData = "";
-            return question;
-        }
     }
 
     [HttpGet("count")]
@@ -54,12 +47,23 @@ public class QuestionsController : ControllerBase
 
         var quest = _questionsCollection
             .AsQueryable()
+            .Select(RemoveImageData)
             .Where(q => filter.AdvancedFilters.Years.Count <= 0 || filter.AdvancedFilters.Years.Contains(q.Year))
             .Where(q => filter.AdvancedFilters.Ratings.Count <= 0 || filter.AdvancedFilters.Ratings.Contains(q.Rating))
             .Where(q => filter.AdvancedFilters.Sources.Count <= 0 || filter.AdvancedFilters.Sources.Contains(q.Source))
-            .Where(q => filter.AdvancedFilters.Difficulties.Count <= 0 || filter.AdvancedFilters.Difficulties.Contains(q.Difficulty))
-            .Where(q => filter.AdvancedFilters.QuestionTypes.Count <= 0 || filter.AdvancedFilters.QuestionTypes.Contains(q.QuestionType));
+            .Where(q => filter.AdvancedFilters.Difficulties.Count <= 0 ||
+                        filter.AdvancedFilters.Difficulties.Contains(q.Difficulty))
+            .Where(q => filter.AdvancedFilters.QuestionTypes.Count <= 0 ||
+                        filter.AdvancedFilters.QuestionTypes.Contains(q.QuestionType))
+            .Where(q => filter.TopicFilters.Contains(q.Topics));
         
         return quest.ToList();
+    }
+    
+    private static Question RemoveImageData(Question question)
+    {
+        question.AnswerData = "";
+        question.QuestionData = "";
+        return question;
     }
 }

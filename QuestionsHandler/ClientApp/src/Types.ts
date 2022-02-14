@@ -28,4 +28,8 @@ export type FiltersData = {
     ratings: number[]
 }
 
+export type QuestionFilterReturnData = {
+    questions :Question[]
+}
+
 export type None = {}

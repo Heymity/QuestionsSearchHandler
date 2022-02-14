@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Question} from "../Types";
+import {Question, QuestionFilterReturnData} from "../Types";
 import {QuestionDisplay} from "./QuestionRendering";
 import {RouteComponentProps} from "react-router-dom";
 
@@ -22,6 +22,8 @@ interface IState {
   selectedQuestion? :Question
   
   expandedQuestion :number
+
+  dontFetchQuestions :boolean
 }
 
 export class ListQuestions extends Component<IProps, IState> {
@@ -29,23 +31,37 @@ export class ListQuestions extends Component<IProps, IState> {
 
   constructor(props :IProps) {
     super(props);
-    this.state = { 
-      questions: [],
+
+    console.log("history.location.state:", this.props.history.location.state) // access state to get questions
+    
+    let historyState = this.props.history.location.state as QuestionFilterReturnData;
+    let loadingValue = true;
+    let questionsValue :Question[] = [];
+    let dontFetchValue = false;
+    if (this.props.history.location.state !== null && historyState.questions !== undefined && historyState.questions !== null && historyState.questions.length > 0){
+      loadingValue = false;
+      questionsValue = historyState.questions;
+      dontFetchValue = true;
+    }
+
+    this.state = {
+      questions: questionsValue,
       questionsCount: 0,
-      loading: true, 
-      
+      loading: loadingValue,
+
       questionsPerPage: 50,
       page: 1,
-      
+
       sortedField: "year",
-      sortingDirection: -1, 
-      
-      renderingQuestion: false, 
+      sortingDirection: -1,
+
+      renderingQuestion: false,
       selectedQuestionIndex: 0,
-      
-      expandedQuestion: -1
+
+      expandedQuestion: -1,
+
+      dontFetchQuestions: dontFetchValue
     };
-    this.props.history.location.state // access state to get questions
   }
 
   componentDidMount() {
@@ -158,6 +174,11 @@ export class ListQuestions extends Component<IProps, IState> {
   }
 
   async populateQuestionsData() {
+    if (this.state.dontFetchQuestions){
+      this.setState({ questionsCount: this.state.questions.length });
+      return;
+    }
+    
     const qCountResponse = await fetch('api/Questions/count');
     const qCountData = await qCountResponse.json();
     this.setState({ questionsCount: qCountData, loading: false });
