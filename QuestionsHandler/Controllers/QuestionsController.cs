@@ -12,11 +12,15 @@ public class QuestionsController : ControllerBase
 {
     private readonly ILogger<QuestionsController> _logger;
     private readonly IMongoCollection<Question> _questionsCollection;
+    private readonly QuestionTopic _rootTopic;
+    private readonly FiltersData _filtersData;
 
-    public QuestionsController(ILogger<QuestionsController> logger, IMongoClient client)
+    public QuestionsController(ILogger<QuestionsController> logger, IMongoClient client, QuestionTopic topics, FiltersData filters)
     {
         _logger = logger;
         _questionsCollection = client.GetDatabase("local").GetCollection<Question>("questions");
+        _rootTopic = topics;
+        _filtersData = filters;
     }
     
     [HttpGet("{from:int?}/{to:int?}")]
@@ -63,6 +67,9 @@ public class QuestionsController : ControllerBase
     }
     
     [HttpPost("addQuestion")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(409)]
+    [ProducesResponseType(400)]
     public async Task<IActionResult> AddQuestionFromRaw()
     {
         // TODO: when this is done, the topics need to be updated and when the app quits saved to the precomputed file
@@ -72,6 +79,8 @@ public class QuestionsController : ControllerBase
         {
             rawQuestionsJson = await reader.ReadToEndAsync();
         }
+        
+        if (string.IsNullOrEmpty(rawQuestionsJson)) return BadRequest(@"{""error"": ""No data was provided""}");
         
         var bsonDocument = BsonDocument.Parse(rawQuestionsJson);
         var question = BsonSerializer.Deserialize<Question>(bsonDocument);
@@ -89,9 +98,33 @@ public class QuestionsController : ControllerBase
             return BadRequest(e.Message);
         }
 
+        var questionTopics = QuestionTopic.TopicsListFromStringMatrix(question.Topics);
+        questionTopics.ForEach(t => _rootTopic.MergeTopic(t));
+        
+        _filtersData.LoadQuestion(question);
+        
+
         return Ok();
     }
-    
+
+    [HttpPost("adm/saveTopicsAndFilters")]
+    public IActionResult SaveQuestionTopicsAndFiltersToPrecomputedFiles()
+    {
+        try
+        {
+            _rootTopic.SortTopicsRecursively();
+            DatabaseSeeder.WriteToJsonFile(_rootTopic, QuestionTopic.TopicsFileName);
+            DatabaseSeeder.WriteToJsonFile(_filtersData, FiltersData.FiltersFileName);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "An error occurred saving the files");
+            return Problem("An error occurred saving the files");
+        }
+
+        return Ok();
+    }
+   
     private static Question RemoveImageData(Question question)
     {
         question.AnswerData = "";

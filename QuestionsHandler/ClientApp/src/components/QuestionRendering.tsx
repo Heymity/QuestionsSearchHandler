@@ -1,9 +1,5 @@
-﻿import React, { Component } from 'react';
-import { Question } from "../Types";
-
-interface IState {
-    question :Question,
-}
+﻿import { Question } from "../Types";
+import { copyImageToClipboard, canCopyImagesToClipboard } from 'copy-image-clipboard'
 
 interface IProps {
     question :Question
@@ -14,18 +10,23 @@ interface QuestionProps {
 }
 
 const QuestionRenderer = (props :QuestionProps) => {
+    const copyImage = async (img :string) => {
+        console.log("Can copy Images to clipboard: " + canCopyImagesToClipboard())
+        await copyImageToClipboard(img)
+    }
+    
     return (
         <div>
-            <p><em>Question</em></p>
+            <p><em>Questão</em></p>
             <div className="questionImageContainer">
                 <img src={props.question.questionData} alt="Question Image"/>
-                <div className="button"><button className="btn btn-dark">Donwload</button></div>
+                <div className="button"><button className="btn btn-dark" onClick={() => copyImage(props.question.questionData)}>Copiar</button></div>
             </div>
             <hr/>
-            <p><em>Answer</em></p>
+            <p><em>Resposta</em></p>
             <div className="questionImageContainer">
                 <img src={props.question.answerData} alt="Answer Image"/>
-                <div className="button"><button className="btn btn-dark">Donwload</button></div>
+                <div className="button"><button className="btn btn-dark">Copiar</button></div>
             </div>
         </div>
     )

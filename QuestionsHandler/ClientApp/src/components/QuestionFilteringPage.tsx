@@ -1,4 +1,4 @@
-﻿import {FiltersData, Question, QuestionFilterReturnData, QuestionTopic} from "../Types";
+﻿import {FiltersData, QuestionFilterReturnData, QuestionTopic} from "../Types";
 import React, {Component} from "react";
 import { useHistory } from 'react-router-dom';
 
@@ -80,6 +80,7 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
     }
     
     areAllSubTopicsSelectedRecursively(topic :QuestionTopic) :boolean {
+        if (topic === null) return false;
         if (topic.subTopics.length > 0) {
             let subSelected = topic.subTopics.map(t => this.areAllSubTopicsSelectedRecursively(t))
             if (subSelected.includes(false)) return false
@@ -137,8 +138,9 @@ export class Topic extends Component<TopicDisplayProps, TopicState> {
                     <h6>&nbsp;{this.props.questionTopic.topicName}</h6>
                 </div>
                 {
+                    // Citologia has a null topic
                     !this.props.questionTopic.isLast && !this.state.collapsed && 
-                    this.props.questionTopic.subTopics.map(t => <Topic questionTopic={t} nestedIndex={nestedIndex + 1} parentQuestionTopic={this} key={t.topicName}/>)
+                    this.props.questionTopic.subTopics.filter(tc => tc !== null).map(t => <Topic questionTopic={t} nestedIndex={nestedIndex + 1} parentQuestionTopic={this} key={t.topicName}/>)
                 }
             </div>
         )

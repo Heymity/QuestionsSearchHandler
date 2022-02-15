@@ -1,10 +1,11 @@
 #undef SEEDING
 
+using System.Text.Json;
 using MongoDB.Driver;
+using QuestionsHandler;
 
 #if SEEDING
 
-using QuestionsHandler;
 DatabaseSeeder.LoadAllQuestionsAndPrecomputeTopics();
 
 #else
@@ -18,6 +19,26 @@ builder.Services.AddSingleton<IMongoClient, MongoClient>(s =>
     var uri = s.GetRequiredService<IConfiguration>()["MongoUri"];
     return new MongoClient(uri);
 });
+
+builder.Services.AddSingleton<QuestionTopic>(_ =>
+    GetFromJsonFile<QuestionTopic>(QuestionTopic.TopicsFileName) ??
+    new QuestionTopic(QuestionTopic.RootQuestionsTopic));
+
+builder.Services.AddSingleton<FiltersData>(_ =>
+    GetFromJsonFile<FiltersData>(FiltersData.FiltersFileName) ??
+    new FiltersData());
+
+
+static T? GetFromJsonFile<T>(string fileName)
+{
+    using var stream = new FileStream(fileName, FileMode.Open);
+    using var reader = new StreamReader(stream);
+    var jsonFromFile = reader.ReadToEnd();
+    var data = JsonSerializer.Deserialize<T>(jsonFromFile);
+    if (data == null) Console.Error.WriteLine($"No correctly arranged json file found at {fileName} to load");
+    return data;
+}
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

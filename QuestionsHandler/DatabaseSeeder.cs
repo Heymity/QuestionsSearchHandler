@@ -57,21 +57,22 @@ public static class DatabaseSeeder
         WriteFiltersToFile(questionFilters);
     }
 
-    private static async void WriteTopicsToFile(QuestionTopic topic)
+    private static void WriteTopicsToFile(QuestionTopic topic)
     {
-        await using var createStream = File.Create(QuestionTopic.TopicsFileName);
-        
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        await JsonSerializer.SerializeAsync(createStream, topic, options);
-        await createStream.DisposeAsync();
+        WriteToJsonFile(topic, QuestionTopic.TopicsFileName);
     }
     
-    private static async void WriteFiltersToFile(FiltersData filtersData)
+    private static void WriteFiltersToFile(FiltersData filtersData)
     {
-        await using var createStream = File.Create(FiltersData.FiltersFileName);
+        WriteToJsonFile(filtersData, FiltersData.FiltersFileName);
+    }
+
+    public static async void WriteToJsonFile<T>(T data, string path)
+    {
+        await using var createStream = File.Create(path);
         
         var options = new JsonSerializerOptions { WriteIndented = true };
-        await JsonSerializer.SerializeAsync(createStream, filtersData, options);
+        await JsonSerializer.SerializeAsync(createStream, data, options);
         await createStream.DisposeAsync();
     }
 

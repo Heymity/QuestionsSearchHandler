@@ -36,7 +36,11 @@ public class QuestionTopic
             SubTopics.Add(topic);
         return true;
 
-        bool AreOfSameTopic(QuestionTopic a, QuestionTopic b) => a.TopicName == b.TopicName;
+        bool AreOfSameTopic(QuestionTopic? a, QuestionTopic? b)
+        {
+            if (a is null || b is null) return false;
+            return a.TopicName == b.TopicName;
+        }
     }
 
     public override string ToString()

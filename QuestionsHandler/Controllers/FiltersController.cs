@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace QuestionsHandler.Controllers;
 
@@ -7,33 +6,17 @@ namespace QuestionsHandler.Controllers;
 [Route("api/[controller]")]
 public class FiltersController : ControllerBase
 {
-    private readonly ILogger<QuestionsController> _logger;
+    private readonly ILogger<FiltersController> _logger;
     private readonly QuestionTopic _rootTopic;
     private readonly FiltersData _filtersData;
 
-    public FiltersController(ILogger<QuestionsController> logger)
+    public FiltersController(ILogger<FiltersController> logger, QuestionTopic topics, FiltersData filters)
     {
         _logger = logger;
-
-        var topics = GetFromJsonFile<QuestionTopic>(QuestionTopic.TopicsFileName);
-        
-        if (topics == null) _logger.LogCritical("No question topics precomputed file was found, initializing without it");
-        _rootTopic = topics ?? new QuestionTopic(QuestionTopic.RootQuestionsTopic);
-        
-        var filters = GetFromJsonFile<FiltersData>(FiltersData.FiltersFileName);
-        
-        if (filters == null) _logger.LogCritical("No filters precomputed file was found, initializing without it");
-        _filtersData = filters ?? new FiltersData();
+        _rootTopic = topics;
+        _filtersData = filters;
     }
-
-    private static T? GetFromJsonFile<T>(string fileName)
-    {
-        using var stream = new FileStream(fileName, FileMode.Open);
-        using var reader = new StreamReader(stream);
-        var jsonFromFile = reader.ReadToEnd();
-        return JsonSerializer.Deserialize<T>(jsonFromFile);
-    }
-
+    
     [HttpGet("topics")]
     public QuestionTopic GetQuestionTopics()
     {
