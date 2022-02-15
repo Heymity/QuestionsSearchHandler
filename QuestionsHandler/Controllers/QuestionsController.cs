@@ -37,12 +37,6 @@ public class QuestionsController : ControllerBase
         return _questionsCollection.CountDocuments(_ => true);
     }
     
-    [HttpGet("{qId:int}")]
-    public Question GetQuestionOfId(int qId)
-    {
-        return _questionsCollection.Find(q => q.QuestionId == qId).First();
-    }
-
     [HttpPost("filteredQuestions")]
     public IEnumerable<Question> GetQuestionAccordingToFilter([FromBody] QuestionsFilterRequestData filter)
     {
@@ -56,11 +50,18 @@ public class QuestionsController : ControllerBase
                         filter.AdvancedFilters.Difficulties.Contains(q.Difficulty))
             .Where(q => filter.AdvancedFilters.QuestionTypes.Count <= 0 ||
                         filter.AdvancedFilters.QuestionTypes.Contains(q.QuestionType))
-            .Where(q => filter.TopicFilters.Contains(q.Topics));
+            .Where(q => filter.TopicFilters.Contains(q.Topics))
+            .OrderByDescending(q => q.Year);
         
         return quests.ToList();
     }
 
+    [HttpGet("{qId:int}")]
+    public Question GetQuestionOfId(int qId)
+    {
+        return _questionsCollection.Find(q => q.QuestionId == qId).First();
+    }
+    
     [HttpPost("addQuestion")]
     public async Task<IActionResult> AddQuestionFromRaw()
     {
@@ -75,14 +76,17 @@ public class QuestionsController : ControllerBase
         var bsonDocument = BsonDocument.Parse(rawQuestionsJson);
         var question = BsonSerializer.Deserialize<Question>(bsonDocument);
 
+        if (await (await _questionsCollection.FindAsync(q => q.QuestionId == question.QuestionId)).AnyAsync())
+            return Conflict(@"{""error"": ""The provided question is already present in the database""}");
+                
         try
         {
             await _questionsCollection.InsertOneAsync(question);
         }
         catch (Exception e)
         {
-            _logger.LogError(e.ToString());
-            return BadRequest();
+            _logger.LogError(e, "An error occurred while trying to add the question");
+            return BadRequest(e.Message);
         }
 
         return Ok();
